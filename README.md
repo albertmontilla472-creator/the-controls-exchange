@@ -29,3 +29,5 @@ General BAS Learning sits under Config immediately below Programming, with BAS a
 
 
 The Home credit section encourages visitors to follow and support the original creators and links directly to Recommended resources. That directory includes every video publisher represented in this library, with verified original channels or official homepages and consolidated collaboration/name aliases. The Controls Exchange organizes and links to their work; it does not claim authorship of their training. New to BAS remains a secondary Home link.
+
+VYKON Pro learning is under Station → Config → Services → VYKON Pro: five original videos and ten public written references cover installation, BQL, sequencing, energy metering, batch tools, reporting, connection checks, history analysis and PX navigation. The shared installation lesson retains one resource ID and its Platform Software Manager placement. Historical references and practice-license conditions are explicit; module installers are not distributed.
