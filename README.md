@@ -21,7 +21,7 @@ Published as a static GitHub Pages website from main, repository root. The sitem
 
 For suspected security vulnerabilities, use [private vulnerability reporting](https://github.com/albertmontilla472-creator/the-controls-exchange/security/advisories/new) and read [SECURITY.md](SECURITY.md). Email is an alternative if the private reporting form is unavailable. Do not post exploit details publicly or send credentials, customer data or building-access information through either channel.
 
-Navigation uses original inline SVG illustrations for servers, stations, controller hardware, I/O, gateways and function blocks. Niagara generations use simple AX, 4 and 5 badges. These identify learning subjects without manufacturer logos or copied application artwork. The same original symbols appear in Nav, Home, search, Programming and static collections. See Terms & notices for independence and artwork details. No external icon library loads.
+Navigation combines original functional symbols with identifying manufacturer/product marks. Videos and playlists show verified original creator logos; absent or unverified logos use a general video icon, and documents retain their document icon. All logo files are stored on this site, pinned by full fingerprints and dimensions, and make no background connections to the publishers. Manufacturer and creator marks belong to their respective owners and do not imply endorsement. See Terms & notices for details. No external icon library loads.
 
 Each resource includes Report via Gmail, which opens Gmail in a new browser tab with its public ID, title and original-source URL prefilled for the maintainer. Properties and static collections also offer Other email app. Sign in to Gmail if needed, then review and send the message yourself. Study notes are not included, and nothing is sent automatically. The Platform branch covers Niagara platform tools only, with focused Commissioning Wizard, Software Manager, TCP/IP Configuration, Backup & restore and Documentation folders. Their gray triangles expand to the actual lessons and guides, without extra overlapping topic folders.
 
@@ -37,3 +37,6 @@ Edition 5.36 expands the original-source video selection with five VYKON Pro com
 
 
 Edition 5.37 replaces manufacturer icon artwork throughout the website with original SVG controller, gateway, generation-badge and programming drawings. Retired vendor image files are removed from the current publication. The layout, resource links and browser study records are preserved.
+
+
+Edition 5.38 restores manufacturer marks, adds verified logos for22 creators and retains generic video icons for three unverified/photo-only identities. Navigation, all292 resources, original source links and saved-study records are preserved.
