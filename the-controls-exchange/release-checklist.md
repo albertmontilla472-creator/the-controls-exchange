@@ -32,10 +32,16 @@ python3 the-controls-exchange/tools/check-site.py
 node the-controls-exchange/tools/smoke-test.js
 ```
 
-Both must end with 0 errors / "All pages loaded without errors". Also open the page and look at the area you changed (desktop and phone width). Albert reviews visual changes.
+Both must end with 0 errors / "All pages loaded without errors". Also open the page and look at the area you changed (desktop and phone width).
 
-## 4. Commit and publish
+## 4. Preview for Albert
+
+- Take desktop (1440×900) and phone (390×844) screenshots of the changed area. `node the-controls-exchange/tools/smoke-test.js <folder>` saves Home screenshots to `<folder>`; capture the changed area separately if it isn't on Home.
+- Show Albert the screenshots plus a short summary: what changed and what stayed the same.
+- **Wait for Albert to say "publish".** If he asks for adjustments, make them, re-run the checks and preview again.
+
+## 5. Publish (only after Albert says "publish")
 
 - Commit message style: `Release 5.39: <what changed>` or `<What changed> (5.39)`.
-- `main` is live. Claude sessions push to their assigned `claude/...` branch and Albert merges a pull request into `main`; Codex has been committing straight to `main`. Either way, run the checks first.
-- GitHub Pages usually updates within a minute or two of the push to `main`.
+- `main` is live. Claude pushes its `claude/...` branch, opens a pull request and merges it into `main`. Codex commits to `main`. Neither publishes before Albert's OK.
+- GitHub Pages usually updates within a minute or two of the change reaching `main`.

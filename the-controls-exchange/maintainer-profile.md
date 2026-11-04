@@ -4,6 +4,13 @@ Who the site is for and how Albert likes changes made. **This repository is publ
 
 Sections marked *(inferred)* were reconstructed from the site's public release history (editions 3.0–5.38) when the project moved from Codex to Claude. Albert should confirm or correct them.
 
+## Confirmed by Albert
+
+These override anything in the *(inferred)* sections below. Both Claude and Codex follow them.
+
+- **Only make changes when absolutely confident; otherwise ask first** (November 4, 2026). Albert prefers being asked to having an assistant guess.
+- **Preview first** (November 4, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
+
 ## Who
 
 - **Albert Montilla**, publishing as **Smarty.ctrl**. Works in building automation controls and uses The Controls Exchange for his own ongoing learning; built it because people kept asking him where to learn BAS. Learning alongside the community.
@@ -43,7 +50,7 @@ Sections marked *(inferred)* were reconstructed from the site's public release h
 ## How Albert works with an AI assistant *(inferred)*
 
 - Short, direct requests ("make the logo bigger", "restore the old layout"). Each request becomes its own numbered edition.
-- Expects the change to be published and the version bumped, with existing content and visitor data untouched.
+- Expects each change to become a new edition, with existing content and visitor data untouched. Publishing follows the preview-first rule above.
 - Wants to use both Claude and Codex on this project. Both read `AGENTS.md` at the repository root and this folder.
 
 ## Imported from Codex / ChatGPT
