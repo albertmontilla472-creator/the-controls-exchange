@@ -10,6 +10,8 @@ These override anything in the *(inferred)* sections below. Both Claude and Code
 
 - **Only make changes when absolutely confident; otherwise ask first** (November 3, 2026). Albert prefers being asked to having an assistant guess.
 - **Brand marks, not generic icons, on new folders** (November 3, 2026). A folder for a protocol, manufacturer or product shows that owner's verified mark. Get the real logo rather than falling back to a generic symbol.
+- **Everything new is searchable** (November 3, 2026). Anything added must come up in the top "Find by name" search, including common spellings such as MSTP for MS/TP.
+- **Look as close to Honeywell Optimizer Workbench as possible, in color** (November 3, 2026). Nav tree icons follow Workbench shapes (disk icons, fox-head Station, Platform bar, green padlock badges) but stay colored and original, never copied software artwork. Icons must look polished.
 - **Preview first** (November 3, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
 
 ## Who

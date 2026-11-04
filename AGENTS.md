@@ -8,6 +8,8 @@ Instructions for AI coding agents (Codex, Claude and others). Albert Montilla (S
 
 1. **Only make a change when you are absolutely confident it is what Albert wants.** If anything is unclear (wording, placement, which resource, how far the change should go), ask him first. A question is always better than a guess.
 2. **Preview first.** Make the change on a branch or locally and run both checks. Then show Albert desktop and phone screenshots of the changed area and a short summary of what changed and what stayed the same. **Nothing reaches `main` (the live site) until he says "publish".** After that, publish it for him. Notes-only changes (this file, `CLAUDE.md`, `the-controls-exchange/`) need no screenshots, but tell him what you are recording.
+3. **Everything new must be findable from the top search bar** ("Find by name"). After adding a folder, resource, page or feature, search for its name and common spellings (e.g. "MSTP", "MS/TP", "BACnet IP") and make sure it comes up near the top. Folders with short tree labels get a full `searchLabel`; spelling variants go in the shared search normalizer (`searchName` in `index.html` and `tools/codex/search-matching.mjs`).
+4. **Real brand marks, not generic icons, on new folders.** Workbench nodes (My Host, Platform, Station, Config, Services, Drivers, Files) use original colored icons in Workbench shapes (`wb-*` in `iconArt`).
 
 ## Non-negotiables
 

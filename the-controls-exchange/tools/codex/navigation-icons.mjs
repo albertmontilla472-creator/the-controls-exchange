@@ -3,11 +3,11 @@
 export function resolveFolderIcon(node={}){
  const id=String(node.id||''),topic=String(node.criteria?.topic||''),tool=String(node.iconTool||node.criteria?.tool||''),track=String(node.criteria?.track||'');
  const fixed={
-  host:'host',platform:'platform','platform-commissioning':'config','platform-software':'software','platform-docs':'document','platform-application-director':'station','platform-station-copier':'files','platform-tcp-ip':'drivers','platform-administration':'config','platform-backup':'backup',
-  station:'station',home:'home',config:'config',services:'services','service-vykon-pro':'vykon-pro',drivers:'drivers',honeywell:'honeywell',
+  host:'wb-host',platform:'wb-platform','platform-commissioning':'config','platform-software':'software','platform-docs':'document','platform-application-director':'station','platform-station-copier':'files','platform-tcp-ip':'drivers','platform-administration':'config','platform-backup':'backup',
+  station:'wb-station',home:'home',config:'wb-config',services:'wb-services','service-vykon-pro':'vykon-pro',drivers:'wb-drivers',honeywell:'honeywell',
   'track-bas':'bas','general-bas':'bas','general-bas-sba':'bas','communication-protocols':'protocol-communications','protocol-wireless':'protocol-wireless','protocol-wireless-lorawan':'protocol-wireless','protocol-wireless-lora-radio':'protocol-wireless','protocol-bacnet':'protocol-bacnet','protocol-bacnet-general':'protocol-bacnet','protocol-bacnet-ip':'protocol-bacnet','protocol-bacnet-mstp':'protocol-bacnet','protocol-modbus':'protocol-modbus','protocol-modbus-general':'protocol-modbus','protocol-modbus-tcp':'protocol-modbus','protocol-modbus-rtu':'protocol-modbus','protocol-lon':'protocol-lon','protocol-lon-general':'protocol-lon','protocol-lon-ft10':'protocol-lon','protocol-lon-ip852':'protocol-lon','protocol-n2':'creator-johnson-controls','track-niagara':'niagara','niagara-ax':'niagara-ax','niagara-n4':'niagara-n4','niagara-n5':'niagara-n5',
   'track-optimizer':'irm','track-spyder':'spyder','track-ciper':'honeywell','ciper-30':'ciper-30','ciper-50':'ciper-50',
-  'track-jci':'fx','track-distech':'creator-distech-controls',programming:'program','programming-kitcontrol':'niagara','programming-cct':'cct','study-route':'route',files:'files',documentation:'document',
+  'track-jci':'fx','track-distech':'creator-distech-controls',programming:'program','programming-kitcontrol':'niagara','programming-cct':'cct','study-route':'route',files:'wb-files',documentation:'document',
   downloads:'software',history:'history',news:'news','release-watch':'release',updates:'info',bookmarks:'bookmark',notes:'notes',recommended:'collection'
  };
  if(fixed[id])return fixed[id];
