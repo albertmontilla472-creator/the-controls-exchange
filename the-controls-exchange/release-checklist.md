@@ -22,6 +22,7 @@ Changes that only touch this `the-controls-exchange/` folder, `AGENTS.md` or `CL
 6. `README.md`: append a short paragraph, e.g. `Edition 5.39 adds …`. Keep the counts accurate (resources, direct videos, documentation references, credited publishers; `check-site.py` prints them).
 7. If the CSS in `index.html` changed: copy the identical `<style>` into `privacy.html` and `terms.html`.
 8. `newInEdition`: `true` only on resources added in this edition. Set the previous edition's additions back to `false` (it shows as "New in this edition").
+9. `publicSummary` on the new `maintenance` entry: one short, public sentence for the Home Change history. No internal process, private details, security specifics or names of who asked. Without it the edition is not listed.
 
 Shortcut for steps 4, 5 and 7 plus all CSP hashes: after editing the data in `index.html` (steps 1–3), render with `node the-controls-exchange/tools/codex/generate-public.mjs --output-dir <folder outside the repo>` and copy back only the `.html` files that differ. Editions 5.40 and 5.41 were released this way.
 
