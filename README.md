@@ -40,3 +40,6 @@ Edition 5.37 replaces manufacturer icon artwork throughout the website with orig
 
 
 Edition 5.38 restores manufacturer marks, adds verified logos for22 creators and retains generic video icons for three unverified/photo-only identities. Navigation, all292 resources, original source links and saved-study records are preserved.
+
+
+Edition 5.39 adds Communication protocols under General BAS Learning, with Wireless, BACnet, Modbus, Lon and N2. The collection contains 334 free resources, including 251 direct videos and 74 documentation references, credited to 32 publishers. Forty-two new resources and eight reused lessons cover wireless BAS gateways, IP and serial communication, Lon routing and legacy N2 integration. Original protocol/publisher logos, existing IDs, notes, true addition dates and the established layout are preserved.

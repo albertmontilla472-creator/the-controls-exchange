@@ -31,8 +31,18 @@
    "width": 128,
    "height": 128
   },
+  "icons/creator-contemporary-controls.png": {
+   "sha256": "0b529dad5e4366188c82f7da4113680c8f14451afcb04b78a2991ef09fb90c7c",
+   "width": 128,
+   "height": 128
+  },
   "icons/creator-distech-controls.png": {
    "sha256": "134383b0776c5550bfac4df885184d5d9c4c966a5ccb8ca1fc8d27639bd7ce1f",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-enless-wireless.png": {
+   "sha256": "3c7b3c3f20881e099079f8097ddbffa584865b1f8be32e831753d6400b1c1e3e",
    "width": 128,
    "height": 128
   },
@@ -56,6 +66,16 @@
    "width": 128,
    "height": 128
   },
+  "icons/creator-loytec.png": {
+   "sha256": "28ee679a9cf4b159792558e4f80a1faa241801d403b966fa108902d9755d165b",
+   "width": 192,
+   "height": 64
+  },
+  "icons/creator-milesight-iot.png": {
+   "sha256": "cf39bbb7d178f703d0e4a1076dd3567fdb4bc880ffd89d620c47bab3becf2158",
+   "width": 128,
+   "height": 128
+  },
   "icons/creator-nordicity-training.png": {
    "sha256": "16891c16ee6b9ba2e2a75b5753a0d75bd4ca872d6a1d6c80299270c69affcf2c",
    "width": 128,
@@ -68,6 +88,11 @@
   },
   "icons/creator-onesighttv.png": {
    "sha256": "9ef0fa0f30a47ebb89c841a213e810d0812b18c089fd1ecf7192cb9eb63f716f",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-realpars.png": {
+   "sha256": "b70b948b789903a8cb28d1bc21e04dc2a011cb2f02af996e5b7f3086952ae70b",
    "width": 128,
    "height": 128
   },
@@ -93,6 +118,11 @@
   },
   "icons/creator-temperature-control-systems.png": {
    "sha256": "a23ca96bbc0310e2f5ebdeaa9b95654409e8fb94013658f911a66fc83e20dc18",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-the-things-industries.png": {
+   "sha256": "07c88aa72b8771aa388edd9a2c598b44a775addcb648a4da37509795ed604a9f",
    "width": 128,
    "height": 128
   },
@@ -125,6 +155,26 @@
    "sha256": "fdfc556cfd0eb36cc7448dc83be69f898553be0b76aec762d20fd179126dbda3",
    "width": 763,
    "height": 576
+  },
+  "icons/protocol-bacnet.png": {
+   "sha256": "9fa6b0f20337f9e5d76a08b9e88773105b095c98d3ce7068d88ba97242921475",
+   "width": 128,
+   "height": 128
+  },
+  "icons/protocol-lon.png": {
+   "sha256": "57e52cd2089326ab97ab07f612970c42dfb2d677377848eeb6e0ccb14ad6f93f",
+   "width": 64,
+   "height": 64
+  },
+  "icons/protocol-modbus.png": {
+   "sha256": "6ac0a9b65c729d09ac378d86b0741627500954053fd1c5ee8287f43391c2dd05",
+   "width": 192,
+   "height": 72
+  },
+  "icons/protocol-wireless.png": {
+   "sha256": "5c609f254203521cc1fc65a7b9897688c4cff71141b09d0fd89664f4dd6d528c",
+   "width": 128,
+   "height": 128
   }
  }
 }
