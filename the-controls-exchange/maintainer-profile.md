@@ -14,6 +14,8 @@ These override anything in the *(inferred)* sections below. Both Claude and Code
 - **Icons in the Niagara Workbench "Lucid" theme style** (November 3, 2026). Albert loves the Lucid theme's colorful classic icons and wants them used from now on, as close to Honeywell Optimizer Workbench as possible. He rejected the newer gray disk style and a flat "clip-art" recolor of it. Draw polished originals that match Lucid closely; don't copy Tridium's software artwork. Show icon drafts for approval before adding them to the page.
 - **Overall look of Honeywell Optimizer Workbench, at its full sizes** (November 4, 2026), with Lucid-style icons for every interface icon. Albert chose Optimizer's sizes over the earlier compact layout. Manufacturer and creator logos are not redrawn.
 - **A small "Change history" dropdown at the bottom of Home** (November 4, 2026), listing every edition with its date. Only short, public, non-sensitive summaries appear there (`publicSummary`); internal notes never do.
+- **No selected-row highlight**, reconfirmed November 4, 2026, even though Optimizer shows one.
+- **Full names in the Nav tree and Learning palette with side-to-side scrolling** (November 4, 2026): no "…" truncation; a thin, light-gray scrollbar appears only when a name is wider than the pane, and it should stay unobtrusive.
 - **Preview first** (November 3, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
 
 ## Who
