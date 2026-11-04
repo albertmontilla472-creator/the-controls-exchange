@@ -67,6 +67,8 @@ const resourceId=/^[A-Z][0-9]{2,4}$/;
 const slugId=/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 const newsId=/^NEWS-[A-Z0-9]+(?:-[A-Z0-9]+)*$/;
 const reservedIds=new Set(['constructor','prototype','__proto__']);
+// Connection-type folders inside each protocol family (Albert, November 3, 2026).
+const PROTOCOL_SECTIONS=Object.freeze(['wireless-lorawan','wireless-lora-radio','wireless-lumenradio','bacnet-general','bacnet-ip','bacnet-mstp','modbus-general','modbus-tcp','modbus-rtu','lon-general','lon-ft10','lon-ip852']);
 
 export function normalizeLf(value){
  if(typeof value!=='string')throw new TypeError('Expected text');
@@ -136,6 +138,7 @@ export function validatePublicData(data){
   if(item.track==='niagara'&&(!Array.isArray(item.niagaraVersions)||!item.niagaraVersions.length||new Set(item.niagaraVersions).size!==item.niagaraVersions.length||item.niagaraVersions.some(version=>!generations.has(version))))throw Error('Invalid Niagara generation membership: '+item.id);
   if(item.serviceModules!==undefined&&(!Array.isArray(item.serviceModules)||!item.serviceModules.length||new Set(item.serviceModules).size!==item.serviceModules.length||item.serviceModules.some(id=>!slugId.test(id)||reservedIds.has(id))))throw Error('Invalid station service module membership: '+item.id);
   if(item.protocols!==undefined&&(!Array.isArray(item.protocols)||!item.protocols.length||new Set(item.protocols).size!==item.protocols.length||item.protocols.some(protocol=>!['wireless','bacnet','modbus','lon','n2'].includes(protocol))))throw Error('Invalid communication protocol membership: '+item.id);
+  if(item.protocolSections!==undefined&&(!Array.isArray(item.protocolSections)||!item.protocolSections.length||new Set(item.protocolSections).size!==item.protocolSections.length||item.protocolSections.some(section=>!PROTOCOL_SECTIONS.includes(section)||!item.protocols?.includes(section.split('-')[0]))))throw Error('Invalid communication protocol section: '+item.id);
   if(item.platformSections!==undefined&&(!Array.isArray(item.platformSections)||!item.platformSections.length||new Set(item.platformSections).size!==item.platformSections.length||item.platformSections.some(section=>!['commissioning','software-manager','station-copier','application-director','tcp-ip','administration','backup'].includes(section))||item.track!=='niagara'||item.tool!=='Niagara platform'))throw Error('Invalid Niagara platform scope: '+item.id);
   if(item.track==='ciper'&&(!Array.isArray(item.ciperModels)||!item.ciperModels.length||new Set(item.ciperModels).size!==item.ciperModels.length||item.ciperModels.some(model=>!['30','50'].includes(model))))throw Error('Invalid CIPer model membership: '+item.id);
   if(!groups.has(item.track))throw new Error('Unknown item track: '+item.id);

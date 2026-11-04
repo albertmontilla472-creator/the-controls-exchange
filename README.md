@@ -43,3 +43,6 @@ Edition 5.38 restores manufacturer marks, adds verified logos for22 creators and
 
 
 Edition 5.39 adds Communication protocols under General BAS Learning, with Wireless, BACnet, Modbus, Lon and N2. The collection contains 334 free resources, including 251 direct videos and 74 documentation references, credited to 32 publishers. Forty-two new resources and eight reused lessons cover wireless BAS gateways, IP and serial communication, Lon routing and legacy N2 integration. Original protocol/publisher logos, existing IDs, notes, true addition dates and the established layout are preserved.
+
+
+Edition 5.40 moves Communication protocols to the top of Drivers and organizes each protocol by connection type: LoRaWAN and LoRa radio for Wireless, IP and MS/TP for BACnet, TCP and RTU for Modbus, and FT-10 and IP-852 for Lon. BACnet, Modbus and Lon also have a General folder for resources that cover more than one connection type. Each protocol folder shows its protocol's identifying mark. The directory still contains 334 free resources, with their existing IDs, notes and addition dates.

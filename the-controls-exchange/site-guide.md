@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.39 (November 3, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.40 (November 3, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -118,10 +118,11 @@ Rules:
 
 The app script builds the folder tree from the data at load time (`addFolder(...)` calls). You rarely edit the tree directly:
 
-- `Drivers` → `Niagara` (→ AX / N4 / N5 → Videos & collections → per-tool → per-topic folders, plus Documentation), `Honeywell` (→ Optimizer/IRM, Spyder, CIPer → Model 30 / Model 50), `JCI`, `Distech`. Each distinct `tool` in a track gets its own folder, and a tool folder gets topic subfolders when its resources span more than one `topic`. (For Niagara, tool folders are built from videos only and sit under each generation's Videos & collections.)
+- `Drivers` → `Communication protocols` (first; see below), `Niagara` (→ AX / N4 / N5 → Videos & collections → per-tool → per-topic folders, plus Documentation), `Honeywell` (→ Optimizer/IRM, Spyder, CIPer → Model 30 / Model 50), `JCI`, `Distech`. Each distinct `tool` in a track gets its own folder, and a tool folder gets topic subfolders when its resources span more than one `topic`. (For Niagara, tool folders are built from videos only and sit under each generation's Videos & collections.)
 - `Services` → Alarms, Histories, Schedules, Security, Tags / queries (by `topic`), and VYKON Pro (by `serviceModules`).
 - `Platform` → Commissioning Wizard, Software Manager, TCP/IP Configuration, Backup & restore (by `platformSections`), Documentation.
-- `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first), `BAS fundamentals` (tool `BAS fundamentals`), and `Communication protocols` → Wireless, BACnet, Modbus, Lon and N2. Each protocol has separate video/documentation branches scoped by `protocols` metadata. Shared lessons retain one id.
+- `Communication protocols` (first under `Drivers`) → Wireless (LoRaWAN, LoRa radio), BACnet (General, IP, MS/TP), Modbus (General, TCP, RTU), Lon (General, FT-10, IP-852) and N2. Membership comes from `protocols` (the family) and `protocolSections` (one of `wireless-lorawan`, `wireless-lora-radio`, `wireless-lumenradio`, `bacnet-general`, `bacnet-ip`, `bacnet-mstp`, `modbus-general`, `modbus-tcp`, `modbus-rtu`, `lon-general`, `lon-ft10`, `lon-ip852`). `*-general` holds resources that cover both connection types or don't say which. Each folder lists its resources directly, videos first; a section folder appears only when it has resources. N2 has no sections. Every protocol folder uses the protocol owner's mark (`nodeIcon` fixed map). Old `protocol-*-videos` / `-docs` links redirect to their protocol folder. Shared lessons retain one id.
+- `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first) and `BAS fundamentals` (tool `BAS fundamentals`).
 - `Programming` → one folder per `programming[]` path.
 - `Files` → Documentation, Recommended resources, Software & worksheets. `History` → Controls news, Release watch, Sources & updates.
 
@@ -204,7 +205,7 @@ The shared public inventory is `the-controls-exchange/icons-manifest.json`. Afte
 
 The reusable modules and `generate-public.mjs` adapter are in `the-controls-exchange/tools/codex/`, with their own README. The adapter reads the current public checkout instead of the nonpublic authoring archive. It can extract the current public template, CSS, app and data, then render a draft into an explicitly chosen directory outside the checkout. It does not bump editions, change the checkout or publish.
 
-Run `node the-controls-exchange/tools/codex/generate-public.mjs --check` for a write-free comparison. All sixteen generated files reproduce edition 5.39 exactly. See the tools README for extraction and draft-output commands. These utilities require only Node built-ins; the separate browser smoke test requires Playwright and Chromium.
+Run `node the-controls-exchange/tools/codex/generate-public.mjs --check` for a write-free comparison. All sixteen generated files reproduce the current edition exactly. See the tools README for extraction and draft-output commands. These utilities require only Node built-ins; the separate browser smoke test requires Playwright and Chromium.
 
 Always pull latest `main` and read `AGENTS.md` and this folder first. Preserve changes made by either assistant. A stale external authoring tree must not overwrite newer public files. Reconcile changes to data, app code, CSS, icon mappings and pins before regenerating. If a manual edit differs from the renderer, review and update the helper rather than silently replacing the edit.
 
