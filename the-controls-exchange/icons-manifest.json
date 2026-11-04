@@ -1,0 +1,130 @@
+{
+ "note": "SHA-256 fingerprints and pixel dimensions of every reviewed file in icons/. Regenerate only after reviewing a new or changed logo.",
+ "files": {
+  "icons/brand-vykon.png": {
+   "sha256": "135357ac92a30b81e7b75ce90c7caf1a294ed2cd5e25cc0b6e221c2e10264828",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-alvasys-automation.png": {
+   "sha256": "4c65f2f0b8f7dcf66815d5be4891f49c49c894f59884552d23ef57aace675c59",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-broudy-precision.png": {
+   "sha256": "7dc1059d5ef81326a48dcc32a31ac1dea35792e6af660ca6be96f45f8b4f43db",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-building-controls-solutions.png": {
+   "sha256": "271b9c82cf9b45991bb69a70ff419d3ce0a5e7c53634fc98ed185ab678f15d40",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-cochrane-supply.png": {
+   "sha256": "2c68103e5009278b4f341155e8375d3efdbc92e5b62b6b346ae2d25a0115acfb",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-cochrane-tech-services.png": {
+   "sha256": "c2b4e4fa95da0a34550faab080fd015f4886bc2a6ed7b15557d4b7feec7d4bec",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-distech-controls.png": {
+   "sha256": "134383b0776c5550bfac4df885184d5d9c4c966a5ccb8ca1fc8d27639bd7ce1f",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-fms-integration.png": {
+   "sha256": "85f1117fff5bb9c679f7704c412d2aa36a620ded98ca3bdf4331e4de36a6c95a",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-fx-training-group.png": {
+   "sha256": "f4d815dbad8d0999b4addbec89c8cff0b833bf20b00b5a4eb3d7a1d74a75aee3",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-insight-control-system.png": {
+   "sha256": "e264d274e5b8bf598667c101fd8806c0424108af293620f5dae90031635435f2",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-johnson-controls.png": {
+   "sha256": "9fea4765d3a4d0de2887a62d6f236ad86ece4dad2a1fb7b77345b71d7fc36f6f",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-nordicity-training.png": {
+   "sha256": "16891c16ee6b9ba2e2a75b5753a0d75bd4ca872d6a1d6c80299270c69affcf2c",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-ohm-building-automation.png": {
+   "sha256": "4cfa03e83ca8177ccdfd38ca93705d9095300b7a704e653c479fab114a16d220",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-onesighttv.png": {
+   "sha256": "9ef0fa0f30a47ebb89c841a213e810d0812b18c089fd1ecf7192cb9eb63f716f",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-smart-buildings-academy.png": {
+   "sha256": "5a13d5bc399a59435896b2521d7b4049570f4ef77e75ee2fc82db39cd75ea0aa",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-stromquist-control-room.png": {
+   "sha256": "780f55784849f6fea3d60fb385289d076bc8a96fd2a56d2a679851f1396f4f83",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-system-control-tech.png": {
+   "sha256": "d115585422c5ca69b503c77057283c233a7957d508a8e59a9cece3c885405ef3",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-teddy-kenworthy.png": {
+   "sha256": "64637290a337e8f137bc516493a822badad6d1c6b62c3e2471059ae55d89c077",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-temperature-control-systems.png": {
+   "sha256": "a23ca96bbc0310e2f5ebdeaa9b95654409e8fb94013658f911a66fc83e20dc18",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-tony-kelly.png": {
+   "sha256": "a02394de838c1b16acf9019cb8940edcbf550d9b41fa1775d04ddeab92d131d8",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-tridium.png": {
+   "sha256": "8c7b901c63f904ce24fbe00e6965aadc153ef0cb3445548cc8f3d17dc88532b5",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-tyrrell-products.png": {
+   "sha256": "2ca12f7fd8e0ddc58e579bdce91d9dbb4e83c5d5f3f4e35c071872684dd8b848",
+   "width": 128,
+   "height": 128
+  },
+  "icons/ec-gfxprogram.png": {
+   "sha256": "aa83f4461b3dfbebceb37f34c2f5f4ee69571dff3dd59d86d9eceedcfc59a67f",
+   "width": 600,
+   "height": 375
+  },
+  "icons/facility-explorer.png": {
+   "sha256": "08ac021beda41bca9b1a278a260a6debf7a14d34266a8b01434d5cbd53587709",
+   "width": 720,
+   "height": 320
+  },
+  "icons/niagara-generations.webp": {
+   "sha256": "fdfc556cfd0eb36cc7448dc83be69f898553be0b76aec762d20fd179126dbda3",
+   "width": 763,
+   "height": 576
+  }
+ }
+}
