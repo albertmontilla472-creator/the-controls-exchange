@@ -49,3 +49,6 @@ Edition 5.40 moves Communication protocols to the top of Drivers and organizes e
 
 
 Edition 5.41 adds a LumenRadio folder under Wireless with six public videos and three manufacturer guides for W-BACnet and W-Modbus, shows the official LoRaWAN and LoRa marks on their folders, and adds a shareable Communication protocols page. Search also finds connection types by common spellings such as MSTP. The directory contains 343 free resources, including 257 direct videos and 77 documentation references, credited to 33 publishers.
+
+
+Edition 5.42 gives the desktop workbench the look of Honeywell Optimizer Workbench at its full sizes, redraws every interface icon in the colorful Niagara Lucid style, adds a small Change history dropdown at the bottom of Home, and lets the Nav tree and Learning palette scroll sideways so long names can be read. Phone layouts, the 343 free resources, IDs, notes and addition dates are unchanged.
