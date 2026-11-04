@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.40 (November 3, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.41 (November 3, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -18,7 +18,7 @@ The interface is modelled on a **Niagara / Honeywell Optimizer Workbench** (menu
 | --- | --- |
 | `index.html` (~899 KB) | The whole learning workbench app: inline CSS, an inline JSON data block with every resource, and one inline app script. |
 | `collections.html` | Index of the 10 shareable collection pages. |
-| `bas-fundamentals.html`, `niagara-ax.html`, `niagara-4.html`, `niagara-5.html`, `honeywell-optimizer-irm.html`, `honeywell-classic-spyder.html`, `honeywell-spyder-model-5-7.html`, `honeywell-ciper.html`, `jci-fx-cct.html`, `distech-gfx.html` | **Pre-rendered** static collection pages (work without JavaScript). Each has its own small CSS and a tiny search script. |
+| `bas-fundamentals.html`, `communication-protocols.html`, `niagara-ax.html`, `niagara-4.html`, `niagara-5.html`, `honeywell-optimizer-irm.html`, `honeywell-classic-spyder.html`, `honeywell-spyder-model-5-7.html`, `honeywell-ciper.html`, `jci-fx-cct.html`, `distech-gfx.html` | **Pre-rendered** static collection pages (work without JavaScript). Each has its own small CSS and a tiny search script. |
 | `privacy.html`, `terms.html` | Static notices. Their text mirrors `publicSite.privacy` / `publicSite.terms` in the data (keep both in sync). Their `<style>` is an **exact copy** of `index.html`'s `<style>`. No scripts. |
 | `controls-exchange-mark.svg`, `-logo.svg`, `-icon.svg`, `favicon.svg`, `controls-exchange-share.png` | Brand artwork (the red "CX" mark, Home logo, social share image 1200×630). |
 | `icons/` | Local logo files: `creator-*.png` (128×128 creator logos), `brand-vykon.png`, `ec-gfxprogram.png`, `facility-explorer.png`, `niagara-generations.webp`. Fingerprints are pinned in `the-controls-exchange/icons-manifest.json`. |
@@ -62,18 +62,18 @@ Top-level keys:
 | Key | Purpose |
 | --- | --- |
 | `groups` (7) | One per track: `niagara`, `optimizer`, `spyder`, `jci`, `distech`, `ciper`, `bas`. Name, intro, main source, note. |
-| `items` (334) | Every learning resource (see below). |
+| `items` (343) | Every learning resource (see below). |
 | `sessions` (7) | Beginner study sequence blocks (Home "New to BAS?" route). |
 | `programming` (5) | Programming paths: `kitcontrol`, `irm`, `classic-spyder`, `cct`, `gfx`. Each lists resource ids in order. |
-| `recommended` | `publishers` (32 creators): name, channel, website, focus, description, access, scope. |
+| `recommended` | `publishers` (33 creators): name, channel, website, focus, description, access, scope. |
 | `news` | Dated BAS news & references (6 items) plus review date. |
 | `niagara5` | Release watch cards. |
 | `software` (5), `downloads` (3) | Free tools and the original worksheets. |
 | `sources` (10), `learningCards` (3) | Sources & updates page and Home cards. |
 | `niagaraGenerations` (3) | `ax`, `n4`, `n5` labels and descriptions. |
-| `collectionPages` (10) | Static page file → workbench folder id. |
+| `collectionPages` (11) | Static page file → workbench folder id. |
 | `release` | `version`, `updated`, `changes` of the current edition. |
-| `maintenance` (57) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
+| `maintenance` (58) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
 | `publicSite` | Brand, title, description, repo URLs, `updated`, and the privacy/terms text. |
 | `security.approvedHosts` | Allowlist of link hostnames. **A URL whose host is not listed renders as `#`.** |
 | `retiredResourceIds` | Ids that were removed. They are reserved forever so old saved notes never attach to a different resource. |
@@ -121,7 +121,7 @@ The app script builds the folder tree from the data at load time (`addFolder(...
 - `Drivers` → `Communication protocols` (first; see below), `Niagara` (→ AX / N4 / N5 → Videos & collections → per-tool → per-topic folders, plus Documentation), `Honeywell` (→ Optimizer/IRM, Spyder, CIPer → Model 30 / Model 50), `JCI`, `Distech`. Each distinct `tool` in a track gets its own folder, and a tool folder gets topic subfolders when its resources span more than one `topic`. (For Niagara, tool folders are built from videos only and sit under each generation's Videos & collections.)
 - `Services` → Alarms, Histories, Schedules, Security, Tags / queries (by `topic`), and VYKON Pro (by `serviceModules`).
 - `Platform` → Commissioning Wizard, Software Manager, TCP/IP Configuration, Backup & restore (by `platformSections`), Documentation.
-- `Communication protocols` (first under `Drivers`) → Wireless (LoRaWAN, LoRa radio), BACnet (General, IP, MS/TP), Modbus (General, TCP, RTU), Lon (General, FT-10, IP-852) and N2. Membership comes from `protocols` (the family) and `protocolSections` (one of `wireless-lorawan`, `wireless-lora-radio`, `wireless-lumenradio`, `bacnet-general`, `bacnet-ip`, `bacnet-mstp`, `modbus-general`, `modbus-tcp`, `modbus-rtu`, `lon-general`, `lon-ft10`, `lon-ip852`). `*-general` holds resources that cover both connection types or don't say which. Each folder lists its resources directly, videos first; a section folder appears only when it has resources. N2 has no sections. Every protocol folder uses the protocol owner's mark (`nodeIcon` fixed map). Old `protocol-*-videos` / `-docs` links redirect to their protocol folder. Shared lessons retain one id.
+- `Communication protocols` (first under `Drivers`) → Wireless (LoRaWAN, LoRa radio, LumenRadio), BACnet (General, IP, MS/TP), Modbus (General, TCP, RTU), Lon (General, FT-10, IP-852) and N2. Membership comes from `protocols` (the family) and `protocolSections` (one of `wireless-lorawan`, `wireless-lora-radio`, `wireless-lumenradio`, `bacnet-general`, `bacnet-ip`, `bacnet-mstp`, `modbus-general`, `modbus-tcp`, `modbus-rtu`, `lon-general`, `lon-ft10`, `lon-ip852`). `*-general` holds resources that cover both connection types or don't say which. Each folder lists its resources directly, videos first; a section folder appears only when it has resources. N2 has no sections. Every protocol folder uses the protocol owner's mark (`nodeIcon` fixed map). Old `protocol-*-videos` / `-docs` links redirect to their protocol folder. Shared lessons retain one id.
 - `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first) and `BAS fundamentals` (tool `BAS fundamentals`).
 - `Programming` → one folder per `programming[]` path.
 - `Files` → Documentation, Recommended resources, Software & worksheets. `History` → Controls news, Release watch, Sources & updates.
@@ -135,6 +135,7 @@ Count badges show immediate contents. They are computed, never hand-typed.
 ## 6. Icons and logos
 
 - Interface/function artwork is original inline SVG in `iconArt`; reviewed manufacturer/protocol marks identify their learning subjects. Local logo files are pinned separately.
+- Wide wordmarks (Modbus, LoRaWAN, LoRa) are 192×72 files shown in a 40×18 slot via `.wb-icon-protocol-*` CSS rules; square marks use the normal 16×16 slot. White-only official marks sit on their owner's background color (LoRaWAN on LoRa Alliance blue #009FE3, LoRa on dark).
 - Video rows show the **creator's logo** via `creatorIconByProvider` (provider name → icon key). The key is either an `iconArt` entry or `icons/<key>.png`. Documents always show the document icon. Unknown or unverified creators show the generic video icon. Don't guess a logo.
 - New logo: verify it is the creator's real mark, save it as a 128×128 PNG in `icons/`, add the mapping, then run `check-site.py --write-icon-manifest` to pin it.
 - Manufacturer marks (Honeywell, Niagara AX/N4/N5, Facility Explorer, EC-gfxProgram, VYKON, JCI, Distech) are used only to identify products. Terms & notices says they imply no endorsement.
@@ -152,7 +153,7 @@ Never rename these keys. Nothing is written just by browsing, only when the visi
 
 ## 8. Static collection pages
 
-Each `collectionPages[]` entry maps a page to a workbench folder. The pages are **fully pre-rendered**: an `<article class="resource collection-filter-row" id="resource-N39" data-resource-id="N39" data-find="…">` per resource, with videos first, then a Documentation / PDFs section, and header counts such as "3 resources · 1 videos & collections · 2 documents".
+Each `collectionPages[]` entry maps a page to a workbench folder. Membership is by track, except `communication-protocols.html`, which takes every resource with `protocols` from any track (`protocolsOnly` in `tools/codex/collection-pages.mjs`); `bas-fundamentals.html` leaves those out (`excludeProtocols`). The pages are **fully pre-rendered**: an `<article class="resource collection-filter-row" id="resource-N39" data-resource-id="N39" data-find="…">` per resource, with videos first, then a Documentation / PDFs section, and header counts such as "3 resources · 1 videos & collections · 2 documents".
 
 When resources are added, edited or removed, update the matching collection pages with the public renderer or careful manual edits. `check-site.py` flags ids or links that no longer match the data. Every page also carries the `?v=<edition>` cache-buster on the mark image and favicon.
 
