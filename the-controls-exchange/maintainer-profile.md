@@ -10,6 +10,8 @@ These override anything in the *(inferred)* sections below. Both Claude and Code
 
 - **Only make changes when absolutely confident; otherwise ask first** (November 3, 2026). Albert prefers being asked to having an assistant guess.
 - **Brand marks, not generic icons, on new folders** (November 3, 2026). A folder for a protocol, manufacturer or product shows that owner's verified mark. Get the real logo rather than falling back to a generic symbol.
+- **Everything new is searchable** (November 3, 2026). Anything added must come up in the top "Find by name" search, including common spellings such as MSTP for MS/TP.
+- **Icons in the Niagara Workbench "Lucid" theme style** (November 3, 2026). Albert loves the Lucid theme's colorful classic icons and wants them used from now on, as close to Honeywell Optimizer Workbench as possible. He rejected the newer gray disk style and a flat "clip-art" recolor of it. Draw polished originals that match Lucid closely; don't copy Tridium's software artwork. Show icon drafts for approval before adding them to the page.
 - **Preview first** (November 3, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
 
 ## Who

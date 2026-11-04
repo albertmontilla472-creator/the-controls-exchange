@@ -46,3 +46,6 @@ Edition 5.39 adds Communication protocols under General BAS Learning, with Wirel
 
 
 Edition 5.40 moves Communication protocols to the top of Drivers and organizes each protocol by connection type: LoRaWAN and LoRa radio for Wireless, IP and MS/TP for BACnet, TCP and RTU for Modbus, and FT-10 and IP-852 for Lon. BACnet, Modbus and Lon also have a General folder for resources that cover more than one connection type. Each protocol folder shows its protocol's identifying mark. The directory still contains 334 free resources, with their existing IDs, notes and addition dates.
+
+
+Edition 5.41 adds a LumenRadio folder under Wireless with six public videos and three manufacturer guides for W-BACnet and W-Modbus, shows the official LoRaWAN and LoRa marks on their folders, and adds a shareable Communication protocols page. Search also finds connection types by common spellings such as MSTP. The directory contains 343 free resources, including 257 direct videos and 77 documentation references, credited to 33 publishers.

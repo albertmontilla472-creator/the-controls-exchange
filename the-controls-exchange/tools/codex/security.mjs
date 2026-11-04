@@ -7,6 +7,8 @@ import {assertResourceReportUrl} from './resource-report.mjs';
 // Reviewed against the published v3.1 link inventory. New hosts require review;
 // neither a suffix match nor a host found in newly imported content approves it.
 export const APPROVED_HOSTS=Object.freeze([
+ // LumenRadio's own W-BACnet documentation, reviewed November 3, 2026.
+ 'lumenradio.com',
  // Original protocol learning and publisher homepages reviewed November 3, 2026.
  // Milesight's own support domains, Enless, The Things publishers and Tyrrell.
  'enless-wireless.com',

@@ -11,6 +11,7 @@ export function normalizeControlsSearch(value){
   .replace(/\bfacility\s+explorer\b|\bjohnson\s+controls\b/g,'jci')
   .replace(/\bcontroller\s+configuration\s+tool\b/g,'cct')
   .replace(/\bkit[\s-]*control\b/g,'kitcontrol').replace(/\bn[\s-]+rio\b/g,'nrio')
+  .replace(/\bms[\s/-]*tp\b/g,'mstp').replace(/\bft[\s-]*10\b/g,'ft10').replace(/\bip[\s-]*852\b/g,'ip852').replace(/\blora[\s-]+wan\b/g,'lorawan')
   .replace(/\//g,' ')
   .replace(/\s+/g,' ').trim();
 }

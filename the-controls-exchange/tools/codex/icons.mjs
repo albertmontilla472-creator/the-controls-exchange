@@ -2,6 +2,9 @@ import {createHash} from 'node:crypto';
 // Fixed local artwork: original interface symbols and reviewed identifying logos.
 // Manufacturer and creator marks identify subjects/publishers, not endorsement.
 export const ICON_ART=Object.freeze({
+  "protocol-lorawan": "<img class=\"logo-image\" src=\"icons/protocol-lorawan.png\" alt=\"\" width=\"192\" height=\"72\" decoding=\"async\">",
+  "protocol-lora": "<img class=\"logo-image\" src=\"icons/protocol-lora.png\" alt=\"\" width=\"192\" height=\"72\" decoding=\"async\">",
+  "creator-lumenradio": "<img class=\"logo-image\" src=\"icons/creator-lumenradio.png\" alt=\"\" width=\"128\" height=\"128\" decoding=\"async\">",
   "protocol-communications": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" fill=\"none\"><rect x=\"4.5\" y=\"1\" width=\"7\" height=\"4\" rx=\".6\" fill=\"#d9e6b9\" stroke=\"#6a7b4b\"/><circle cx=\"6.3\" cy=\"3\" r=\".6\" fill=\"#5b956c\"/><path d=\"M8.5 3h1.5\" stroke=\"#6a7b4b\"/><path d=\"M8 5v2.5\" stroke=\"#596f83\"/><path d=\"M1 8h14\" stroke=\"#d52e24\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><path d=\"M3 8v2.5M8 8v2.5M13 8v2.5\" stroke=\"#596f83\"/><rect x=\"1.2\" y=\"10.5\" width=\"3.6\" height=\"4\" rx=\".5\" fill=\"#a7c2d4\" stroke=\"#4e6c83\"/><rect x=\"6.2\" y=\"10.5\" width=\"3.6\" height=\"4\" rx=\".5\" fill=\"#a7c2d4\" stroke=\"#4e6c83\"/><rect x=\"11.2\" y=\"10.5\" width=\"3.6\" height=\"4\" rx=\".5\" fill=\"#a7c2d4\" stroke=\"#4e6c83\"/></svg>",
   "vykon-pro": "<img class=\"logo-image\" src=\"icons/brand-vykon.png\" alt=\"\" width=\"128\" height=\"128\" decoding=\"async\">",
   "folder": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M1.5 5V3h5l1.5 2h6.5v9h-13z\" fill=\"#dfdba4\" stroke=\"#565b38\"/><path d=\"M2 6h12\" stroke=\"#ffffdf\"/></svg>",
@@ -88,6 +91,7 @@ export const ICON_ART=Object.freeze({
   "creator-lonmark": "<img class=\"logo-image\" src=\"icons/protocol-lon.png\" alt=\"\" width=\"64\" height=\"64\" decoding=\"async\">"
 });
 export const CREATOR_ICON_KEYS=Object.freeze({
+  "LumenRadio": "creator-lumenradio",
   "Broudy Precision": "creator-broudy-precision",
   "Broudy / Johnson Controls": "creator-broudy-precision",
   "Smart Buildings Academy": "creator-smart-buildings-academy",
@@ -124,6 +128,21 @@ export const CREATOR_ICON_KEYS=Object.freeze({
 export function resourceIconKey(resource={},creatorIcons={}){if(resource.format==='Reference'||resource.type==='Supporting documentation'||/\.pdf(?:$|[?#])/i.test(String(resource.url||'')))return 'document';return Object.hasOwn(creatorIcons,String(resource.provider||''))?creatorIcons[resource.provider]:'video';}
 export function iconMarkup(name){const key=Object.hasOwn(ICON_ART,name)?name:'folder';return `<span class="wb-icon wb-icon-${key}" data-icon="${key}" aria-hidden="true">${ICON_ART[key]}</span>`;}
 export const ICON_ASSETS=Object.freeze(Object.fromEntries(Object.entries({
+  "icons/protocol-lorawan.png": {
+    "width": 192,
+    "height": 72,
+    "sha256": "b1ec315ad39d55c3ccafb5f2827474197e29d3e5289fc9faf54c075d1590f3ab"
+  },
+  "icons/protocol-lora.png": {
+    "width": 192,
+    "height": 72,
+    "sha256": "b684f9cc466fd8b26855f84b7d03a3f82feb12bb55414ddd4353e7fae0281535"
+  },
+  "icons/creator-lumenradio.png": {
+    "width": 128,
+    "height": 128,
+    "sha256": "ba770849b594ef2e24a9f41e3a5a7c9af8abcdfc4690be4e628f83abf5cdb3f5"
+  },
   "icons/facility-explorer.png": {
     "width": 720,
     "height": 320,
