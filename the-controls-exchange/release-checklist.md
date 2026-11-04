@@ -1,6 +1,6 @@
 # Release checklist
 
-Every change visible on the site ships as a numbered **edition** (current: 5.38). Small fixes bump the minor number (5.38 → 5.39). The history is in `maintenance` inside `index.html` and in commit messages.
+Every change visible on the site ships as a numbered **edition**. Small fixes bump the minor number (for example 5.40 → 5.41); `check-site.py` prints the current one. The history is in `maintenance` inside `index.html` and in commit messages.
 
 Changes that only touch this `the-controls-exchange/` folder, `AGENTS.md` or `CLAUDE.md` do not change the website and **do not** need an edition.
 
@@ -21,6 +21,8 @@ Changes that only touch this `the-controls-exchange/` folder, `AGENTS.md` or `CL
 5. `privacy.html` and `terms.html`: "Updated <date>" line.
 6. `README.md`: append a short paragraph, e.g. `Edition 5.39 adds …`. Keep the counts accurate (resources, direct videos, documentation references, credited publishers; `check-site.py` prints them).
 7. If the CSS in `index.html` changed: copy the identical `<style>` into `privacy.html` and `terms.html`.
+
+Shortcut for steps 4, 5 and 7 plus all CSP hashes: after editing the data in `index.html` (steps 1–3), render with `node the-controls-exchange/tools/codex/generate-public.mjs --output-dir <folder outside the repo>` and copy back only the `.html` files that differ. Edition 5.40 was released this way.
 
 Release-note voice: what changed, then what was preserved ("All N learning records, saved notes, IDs, source links and true addition dates are preserved.").
 

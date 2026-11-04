@@ -67,7 +67,7 @@ const resourceId=/^[A-Z][0-9]{2,4}$/;
 const slugId=/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 const newsId=/^NEWS-[A-Z0-9]+(?:-[A-Z0-9]+)*$/;
 const reservedIds=new Set(['constructor','prototype','__proto__']);
-// Connection-type folders inside each protocol family (Albert, November 4, 2026).
+// Connection-type folders inside each protocol family (Albert, November 3, 2026).
 const PROTOCOL_SECTIONS=Object.freeze(['wireless-lorawan','wireless-lora-radio','wireless-lumenradio','bacnet-general','bacnet-ip','bacnet-mstp','modbus-general','modbus-tcp','modbus-rtu','lon-general','lon-ft10','lon-ip852']);
 
 export function normalizeLf(value){

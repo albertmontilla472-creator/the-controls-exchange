@@ -4,7 +4,7 @@ Instructions for AI coding agents (Codex, Claude and others). Albert Montilla (S
 
 **Before any change, read the project folder `the-controls-exchange/`**: `site-guide.md` (how the site works), `release-checklist.md` (how to ship), `maintainer-profile.md` (Albert's preferences). Update those files when you learn something new.
 
-## How Albert wants changes made (confirmed by Albert, November 4, 2026)
+## How Albert wants changes made (confirmed by Albert, November 3, 2026)
 
 1. **Only make a change when you are absolutely confident it is what Albert wants.** If anything is unclear (wording, placement, which resource, how far the change should go), ask him first. A question is always better than a guess.
 2. **Preview first.** Make the change on a branch or locally and run both checks. Then show Albert desktop and phone screenshots of the changed area and a short summary of what changed and what stayed the same. **Nothing reaches `main` (the live site) until he says "publish".** After that, publish it for him. Notes-only changes (this file, `CLAUDE.md`, `the-controls-exchange/`) need no screenshots, but tell him what you are recording.

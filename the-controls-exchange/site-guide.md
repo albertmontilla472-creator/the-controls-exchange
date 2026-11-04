@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.39 (November 3, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.40 (November 3, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -205,7 +205,7 @@ The shared public inventory is `the-controls-exchange/icons-manifest.json`. Afte
 
 The reusable modules and `generate-public.mjs` adapter are in `the-controls-exchange/tools/codex/`, with their own README. The adapter reads the current public checkout instead of the nonpublic authoring archive. It can extract the current public template, CSS, app and data, then render a draft into an explicitly chosen directory outside the checkout. It does not bump editions, change the checkout or publish.
 
-Run `node the-controls-exchange/tools/codex/generate-public.mjs --check` for a write-free comparison. All sixteen generated files reproduce edition 5.39 exactly. See the tools README for extraction and draft-output commands. These utilities require only Node built-ins; the separate browser smoke test requires Playwright and Chromium.
+Run `node the-controls-exchange/tools/codex/generate-public.mjs --check` for a write-free comparison. All sixteen generated files reproduce the current edition exactly. See the tools README for extraction and draft-output commands. These utilities require only Node built-ins; the separate browser smoke test requires Playwright and Chromium.
 
 Always pull latest `main` and read `AGENTS.md` and this folder first. Preserve changes made by either assistant. A stale external authoring tree must not overwrite newer public files. Reconcile changes to data, app code, CSS, icon mappings and pins before regenerating. If a manual edit differs from the renderer, review and update the helper rather than silently replacing the edit.
 

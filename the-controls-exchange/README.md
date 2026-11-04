@@ -7,7 +7,7 @@ This folder is **not part of the website's design or content**. But the reposito
 | File | Use it for |
 | --- | --- |
 | `site-guide.md` | How the site is built: files, data model, CSP hashes, nav tree, icons, storage, writing style. Read before any change. |
-| `release-checklist.md` | Step-by-step for shipping a new edition (5.38 → 5.39). |
+| `release-checklist.md` | Step-by-step for shipping a new edition. |
 | `maintainer-profile.md` | Who Albert is, project history, content and design preferences. |
 | `codex-handoff.md` | Prompts for moving knowledge from Codex / ChatGPT into this folder. |
 | `icons-manifest.json` | SHA-256 fingerprints and dimensions of every file in `icons/`. |
