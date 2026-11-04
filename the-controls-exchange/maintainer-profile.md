@@ -12,6 +12,10 @@ These override anything in the *(inferred)* sections below. Both Claude and Code
 - **Brand marks, not generic icons, on new folders** (November 3, 2026). A folder for a protocol, manufacturer or product shows that owner's verified mark. Get the real logo rather than falling back to a generic symbol.
 - **Everything new is searchable** (November 3, 2026). Anything added must come up in the top "Find by name" search, including common spellings such as MSTP for MS/TP.
 - **Icons in the Niagara Workbench "Lucid" theme style** (November 3, 2026). Albert loves the Lucid theme's colorful classic icons and wants them used from now on, as close to Honeywell Optimizer Workbench as possible. He rejected the newer gray disk style and a flat "clip-art" recolor of it. Draw polished originals that match Lucid closely; don't copy Tridium's software artwork. Show icon drafts for approval before adding them to the page.
+- **Overall look of Honeywell Optimizer Workbench, at its full sizes** (November 4, 2026), with Lucid-style icons for every interface icon. Albert chose Optimizer's sizes over the earlier compact layout. Manufacturer and creator logos are not redrawn.
+- **A small "Change history" dropdown at the bottom of Home** (November 4, 2026), listing every edition with its date. Only short, public, non-sensitive summaries appear there (`publicSummary`); internal notes never do.
+- **No selected-row highlight**, reconfirmed November 4, 2026, even though Optimizer shows one.
+- **Full names in the Nav tree and Learning palette with side-to-side scrolling** (November 4, 2026): no "…" truncation; a thin, light-gray scrollbar appears only when a name is wider than the pane, and it should stay unobtrusive.
 - **Preview first** (November 3, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
 
 ## Who
@@ -98,7 +102,7 @@ The following additional context comes from Albert's direct requests in the orig
 - Folder badges describe immediate visible folders/entries; leaf counts describe the actual distinct resources there. Home tiles can show distinct resource totals. Search filters must not change those navigation counts.
 - Menus must close normally, including by toggling, clicking outside or pressing Escape. Keep the small global name search at the top.
 - Keep the red house for Home, clear gears/wrench, recognizable directional folder buttons, and a distinct block-programming symbol. Do not add the two removed redundant toolbar shortcuts back.
-- Keep personal/social links in the Home creator section rather than repeating that card on every page. The redundant Browse & share collections section and Library updates section stay off Home.
+- Keep personal/social links in the Home creator section rather than repeating that card on every page. The redundant Browse & share collections section and Library updates section stay off Home. The small Change history dropdown at the very bottom of Home is the exception Albert requested on November 4, 2026.
 - Original manufacturer/protocol marks and verified creator logos are an intentional preference. Use the creator logo for video listings and the document icon for written references. Retain the generic video symbol for an absent or unverified logo, including an unsuitable portrait-only avatar.
 
 ### Maintenance and communication
