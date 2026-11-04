@@ -9,6 +9,7 @@ Sections marked *(inferred)* were reconstructed from the public release history 
 These override anything in the *(inferred)* sections below. Both Claude and Codex follow them.
 
 - **Only make changes when absolutely confident; otherwise ask first** (November 4, 2026). Albert prefers being asked to having an assistant guess.
+- **Brand marks, not generic icons, on new folders** (November 4, 2026). A folder for a protocol, manufacturer or product shows that owner's verified mark. Get the real logo rather than falling back to a generic symbol.
 - **Preview first** (November 4, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
 
 ## Who
@@ -79,7 +80,7 @@ The following additional context comes from Albert's direct requests in the orig
 - Platform contains Niagara platform-specific learning. Software Manager belongs there. Do not restore Application Copier, Station Copier or Platform Administration folders filled with repeated general videos merely to imitate a product menu.
 - Reuse one resource id when a lesson belongs in several folders. Keep exact topic membership, true source dates and actual folder contents; do not inflate counts with unrelated material.
 - VYKON Pro was an explicit area of interest, including substantial original videos and documentation. Verify actual module/component use; general BQL or core Niagara tutorials are not automatically Pro-module training.
-- Communication protocols belongs under General BAS Learning. Wireless emphasizes LoRa radio, LoRaWAN and practical BAS gateway integration. Label BACnet/IP versus MS/TP, Modbus TCP versus serial, Lon FT-10 versus IP-852, and N2 serial networks with IP access through a supervisor or gateway. The briefly suggested move to Drivers was withdrawn.
+- Communication protocols is the **first folder under Drivers** (Albert, November 4, 2026; this replaces its earlier place under General BAS Learning). Inside it: Wireless → LoRaWAN, LoRa radio and LumenRadio (planned); BACnet → General, IP (including BACnet/SC), MS/TP; Modbus → General, TCP, RTU; Lon → General, FT-10, IP-852; N2 as one folder. Each folder lists its resources directly, videos first. Specific folders hold only resources clearly about that connection type; General holds the rest. Wireless emphasizes LoRa radio, LoRaWAN and practical BAS gateway integration; label N2 serial networks with IP access through a supervisor or gateway.
 - Free videos about licensed tools are welcome, with an accurate practice-license or hardware note. Free viewing does not make the software, controller, driver or network service free.
 - Only genuinely free, public software belongs in the software/download section. Never rehost third-party videos, PDFs or installers.
 - Do not add training-board labs, quizzes, simulations or unnecessary features. Preserve existing original worksheets and visitor-controlled notes.
