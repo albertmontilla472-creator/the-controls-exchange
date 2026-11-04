@@ -13,6 +13,7 @@ This folder is **not part of the website's design or content**. But the reposito
 | `icons-manifest.json` | SHA-256 fingerprints and dimensions of every file in `icons/`. |
 | `tools/check-site.py` | Static checks. `--fix-hashes` rewrites CSP hashes after editing inline code. |
 | `tools/smoke-test.js` | Loads every page in headless Chromium (desktop and phone) and fails on errors. |
+| `tools/codex/` | Public-safe Codex rendering modules, a write-free reproducibility check and extraction/draft-output commands. |
 
 Run both tools from the repository root before every push:
 

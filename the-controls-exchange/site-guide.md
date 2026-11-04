@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.38 (November 3, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.39 (November 3, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -16,7 +16,7 @@ The interface is modelled on a **Niagara / Honeywell Optimizer Workbench** (menu
 
 | File | What it is |
 | --- | --- |
-| `index.html` (~815 KB) | The whole learning workbench app: inline CSS, an inline JSON data block with every resource, and one inline app script. |
+| `index.html` (~899 KB) | The whole learning workbench app: inline CSS, an inline JSON data block with every resource, and one inline app script. |
 | `collections.html` | Index of the 10 shareable collection pages. |
 | `bas-fundamentals.html`, `niagara-ax.html`, `niagara-4.html`, `niagara-5.html`, `honeywell-optimizer-irm.html`, `honeywell-classic-spyder.html`, `honeywell-spyder-model-5-7.html`, `honeywell-ciper.html`, `jci-fx-cct.html`, `distech-gfx.html` | **Pre-rendered** static collection pages (work without JavaScript). Each has its own small CSS and a tiny search script. |
 | `privacy.html`, `terms.html` | Static notices. Their text mirrors `publicSite.privacy` / `publicSite.terms` in the data (keep both in sync). Their `<style>` is an **exact copy** of `index.html`'s `<style>`. No scripts. |
@@ -26,7 +26,7 @@ The interface is modelled on a **Niagara / Honeywell Optimizer Workbench** (menu
 | `README.md` | Public project description. Each release appends an "Edition X.YZ" paragraph. |
 | `SECURITY.md`, `robots.txt`, `sitemap.xml` | Security policy, crawler rules, and the list of public collection pages. |
 
-There is **no generator script in the repository**. Earlier editions were produced by Codex with its own scripts. Edit the files directly (or with small one-off scripts) and verify with the tools in `the-controls-exchange/tools/`.
+Earlier editions used a separate local Codex source tree. Public-safe rendering modules and a public-data adapter are now in `the-controls-exchange/tools/codex/`; see **Codex tooling** below. The hosted site still has no server build step.
 
 ## 3. Content Security Policy: the #1 way to break the site
 
@@ -62,10 +62,10 @@ Top-level keys:
 | Key | Purpose |
 | --- | --- |
 | `groups` (7) | One per track: `niagara`, `optimizer`, `spyder`, `jci`, `distech`, `ciper`, `bas`. Name, intro, main source, note. |
-| `items` (292) | Every learning resource (see below). |
+| `items` (334) | Every learning resource (see below). |
 | `sessions` (7) | Beginner study sequence blocks (Home "New to BAS?" route). |
 | `programming` (5) | Programming paths: `kitcontrol`, `irm`, `classic-spyder`, `cct`, `gfx`. Each lists resource ids in order. |
-| `recommended` | `publishers` (25 creators): name, channel, website, focus, description, access, scope. |
+| `recommended` | `publishers` (32 creators): name, channel, website, focus, description, access, scope. |
 | `news` | Dated BAS news & references (6 items) plus review date. |
 | `niagara5` | Release watch cards. |
 | `software` (5), `downloads` (3) | Free tools and the original worksheets. |
@@ -73,7 +73,7 @@ Top-level keys:
 | `niagaraGenerations` (3) | `ax`, `n4`, `n5` labels and descriptions. |
 | `collectionPages` (10) | Static page file → workbench folder id. |
 | `release` | `version`, `updated`, `changes` of the current edition. |
-| `maintenance` (56) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
+| `maintenance` (57) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
 | `publicSite` | Brand, title, description, repo URLs, `updated`, and the privacy/terms text. |
 | `security.approvedHosts` | Allowlist of link hostnames. **A URL whose host is not listed renders as `#`.** |
 | `retiredResourceIds` | Ids that were removed. They are reserved forever so old saved notes never attach to a different resource. |
@@ -121,7 +121,7 @@ The app script builds the folder tree from the data at load time (`addFolder(...
 - `Drivers` → `Niagara` (→ AX / N4 / N5 → Videos & collections → per-tool → per-topic folders, plus Documentation), `Honeywell` (→ Optimizer/IRM, Spyder, CIPer → Model 30 / Model 50), `JCI`, `Distech`. Each distinct `tool` in a track gets its own folder, and a tool folder gets topic subfolders when its resources span more than one `topic`. (For Niagara, tool folders are built from videos only and sit under each generation's Videos & collections.)
 - `Services` → Alarms, Histories, Schedules, Security, Tags / queries (by `topic`), and VYKON Pro (by `serviceModules`).
 - `Platform` → Commissioning Wizard, Software Manager, TCP/IP Configuration, Backup & restore (by `platformSections`), Documentation.
-- `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first) and `BAS fundamentals` (tool `BAS fundamentals`).
+- `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first), `BAS fundamentals` (tool `BAS fundamentals`), and `Communication protocols` → Wireless, BACnet, Modbus, Lon and N2. Each protocol has separate video/documentation branches scoped by `protocols` metadata. Shared lessons retain one id.
 - `Programming` → one folder per `programming[]` path.
 - `Files` → Documentation, Recommended resources, Software & worksheets. `History` → Controls news, Release watch, Sources & updates.
 
@@ -133,7 +133,7 @@ Count badges show immediate contents. They are computed, never hand-typed.
 
 ## 6. Icons and logos
 
-- Folder/function icons are original inline SVG in `iconArt` (in the app script).
+- Interface/function artwork is original inline SVG in `iconArt`; reviewed manufacturer/protocol marks identify their learning subjects. Local logo files are pinned separately.
 - Video rows show the **creator's logo** via `creatorIconByProvider` (provider name → icon key). The key is either an `iconArt` entry or `icons/<key>.png`. Documents always show the document icon. Unknown or unverified creators show the generic video icon. Don't guess a logo.
 - New logo: verify it is the creator's real mark, save it as a 128×128 PNG in `icons/`, add the mapping, then run `check-site.py --write-icon-manifest` to pin it.
 - Manufacturer marks (Honeywell, Niagara AX/N4/N5, Facility Explorer, EC-gfxProgram, VYKON, JCI, Distech) are used only to identify products. Terms & notices says they imply no endorsement.
@@ -153,7 +153,7 @@ Never rename these keys. Nothing is written just by browsing, only when the visi
 
 Each `collectionPages[]` entry maps a page to a workbench folder. The pages are **fully pre-rendered**: an `<article class="resource collection-filter-row" id="resource-N39" data-resource-id="N39" data-find="…">` per resource, with videos first, then a Documentation / PDFs section, and header counts such as "3 resources · 1 videos & collections · 2 documents".
 
-When resources are added, edited or removed, the matching collection page(s) must be updated by hand (copy a sibling `<article>` and adjust it). `check-site.py` flags ids or links that no longer match the data. Every page also carries the `?v=<edition>` cache-buster on the mark image and favicon.
+When resources are added, edited or removed, update the matching collection pages with the public renderer or careful manual edits. `check-site.py` flags ids or links that no longer match the data. Every page also carries the `?v=<edition>` cache-buster on the mark image and favicon.
 
 ## 9. Links and reporting
 
@@ -177,3 +177,39 @@ node the-controls-exchange/tools/smoke-test.js
 ```
 
 The first is static (hashes, data rules, versions, links, icons, collection pages). The second loads every page in headless Chromium at desktop and phone sizes and fails on any console error, which is how a CSP mistake shows up.
+
+## Codex tooling
+
+### Original local build
+
+The original authoring tree lived outside this public checkout in Codex's local working project. Its entry point was `build.mjs`, beside `page.html`, `app.js`, `styles.css`, `mobile.css` and `data/*.json`. It combined base records and additions, applied metadata, and maintained a separate enriched working archive. Public output selected verified free/public records, reserved retired ids and removed private verification provenance. Private paths, archive files and publication-state files are intentionally not copied here.
+
+The build injected the reviewed icon map and self-contained folder-icon, search, reporting and addition-date helpers into the app. It normalized LF line endings, serialized public data compactly, escaped `<` in JSON, checked JavaScript syntax, calculated SHA-256 CSP hashes and filled the HTML shell. It wrote `dist/index.html` and local HTML/Markdown exports. Hosting received only an explicit sanitized static file list.
+
+### Collections, privacy and terms
+
+`collection-pages.mjs` generated ten subject pages, the collection index, sitemap and robots file from the same public data. Membership used track, Niagara-generation and Spyder-generation predicates. Pages link directly to original sources, put videos before documentation, use creator icons for videos and retain local search and exact CSP hashes.
+
+The `legalPage` renderer inside the original `build.mjs` rendered `publicSite.privacy` and `publicSite.terms`. It reused the exact main CSS, edition cache-buster and notice date, with `script-src 'none'`. The public adapter below includes that renderer, keeping notices aligned with their data and shared styles.
+
+### Logo sources and fingerprints
+
+`icons.mjs` held fixed `ICON_ART`, `CREATOR_ICON_KEYS` and immutable `ICON_ASSETS` records. Each raster pin contains its exact dimensions and SHA-256 digest. `validateIconAsset` checks file signatures, dimensions, size and the full digest. `share-card.mjs` separately validates the original site share image. These checks identify reviewed bytes; they do not establish ownership or a logo license.
+
+Original artwork came from verified publisher/vendor pages or original channels. Local Pillow helpers, including `prepare-logo-assets-5.38.py` and `prepare-protocol-assets-5.39.py`, used contain resizing on transparent canvases, preserving complete marks and colors. Portrait-only or unverified avatars kept the video fallback. Source URLs, identity checks and normalization notes were recorded locally. No third-party video, PDF or installer was rehosted.
+
+The shared public inventory is `the-controls-exchange/icons-manifest.json`. After reviewing new artwork, run `python3 the-controls-exchange/tools/check-site.py --write-icon-manifest` and update the renderer's `icons.mjs` pins where applicable. Never bless an unexpected hash simply to make a check pass.
+
+### Public-safe tools and source of truth
+
+The reusable modules and `generate-public.mjs` adapter are in `the-controls-exchange/tools/codex/`, with their own README. The adapter reads the current public checkout instead of the nonpublic authoring archive. It can extract the current public template, CSS, app and data, then render a draft into an explicitly chosen directory outside the checkout. It does not bump editions, change the checkout or publish.
+
+Run `node the-controls-exchange/tools/codex/generate-public.mjs --check` for a write-free comparison. All sixteen generated files reproduce edition 5.39 exactly. See the tools README for extraction and draft-output commands. These utilities require only Node built-ins; the separate browser smoke test requires Playwright and Chromium.
+
+Always pull latest `main` and read `AGENTS.md` and this folder first. Preserve changes made by either assistant. A stale external authoring tree must not overwrite newer public files. Reconcile changes to data, app code, CSS, icon mappings and pins before regenerating. If a manual edit differs from the renderer, review and update the helper rather than silently replacing the edit.
+
+### Checks and publication
+
+The local workflow used `test-library.mjs` for navigation, counts and notes; `test-security.mjs` for URLs, CSP, assets and publication safety; `test-learning-updates.mjs` for actual addition dates; and `test-collections.mjs` for static scope. Shared public checks remain `tools/check-site.py` and `tools/smoke-test.js`; both passed for 5.39. The smoke test accepts `CONTROLS_EXCHANGE_CHROMIUM_PATH` for an existing trusted Chrome/Chromium executable, avoiding an unnecessary browser download.
+
+Publication used a changed-file tree based on the current remote tree, one parent commit and an expected-head update with force disabled. The final head, file fingerprints and modes were read back, followed by the Pages deployment and actual public edition. Preserve existing executable modes on shared tools. The current preview-first and explicit `publish` approval rules apply; the helpers do not grant publication permission.

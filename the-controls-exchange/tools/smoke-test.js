@@ -7,6 +7,7 @@
 // (desktop and phone widths) and fails on any console error, page error or blocked
 // resource (a CSP hash mismatch shows up here as a console error).
 // Requires Playwright with Chromium installed: npm i -g playwright && npx playwright install chromium
+// Or set CONTROLS_EXCHANGE_CHROMIUM_PATH to an existing trusted Chrome/Chromium executable.
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -29,7 +30,8 @@ const server = http.createServer((req, res) => {
   await new Promise(r => server.listen(0, '127.0.0.1', r));
   const base = `http://127.0.0.1:${server.address().port}/`;
   const pages = fs.readdirSync(root).filter(f => f.endsWith('.html')).sort();
-  const browser = await chromium.launch();
+  const executablePath = process.env.CONTROLS_EXCHANGE_CHROMIUM_PATH;
+  const browser = await chromium.launch(executablePath ? { executablePath } : {});
   let failures = 0;
   for (const [label, viewport] of [['desktop', { width: 1440, height: 900 }], ['phone', { width: 390, height: 844 }]]) {
     for (const file of pages) {
