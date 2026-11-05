@@ -67,7 +67,7 @@ if(!options['output-dir']||options.check){
 if(options['output-dir']){
  const output=outsideCheckout(options['output-dir']);
  for(const [file,content]of pages)fs.writeFileSync(path.join(output,file),content);
- const assets=['favicon.svg','controls-exchange-icon.svg','controls-exchange-mark.svg','controls-exchange-logo.svg','controls-exchange-share.png','SECURITY.md','README.md','.nojekyll',...Object.keys(ICON_ASSETS),...data.downloads.map(item=>'downloads/'+item.file)];
+ const assets=['favicon.svg','controls-exchange-icon.svg','controls-exchange-mark.svg','controls-exchange-mark-clear.svg','controls-exchange-logo.svg','controls-exchange-share.png','SECURITY.md','README.md','.nojekyll',...Object.keys(ICON_ASSETS),...data.downloads.map(item=>'downloads/'+item.file)];
  for(const file of assets){
   const bytes=fs.readFileSync(path.join(root,file));
   validatePublicationFile(file,file.endsWith('.png')||file.endsWith('.webp')?bytes:bytes.toString('utf8'));

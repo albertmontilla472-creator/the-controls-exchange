@@ -55,3 +55,6 @@ Edition 5.42 gives the desktop workbench the look of Honeywell Optimizer Workben
 
 
 Edition 5.43 returns the workbench to its previous compact sizes while keeping the Optimizer colors and shapes, Lucid-style icons, Change history and side-scrolling. Every Nav tree folder that holds lessons or documents now opens to list them, and the unused square beside the Learning palette heading is gone. The 343 free resources, IDs, notes and addition dates are unchanged.
+
+
+Edition 5.44 displays the desktop workbench at 90% scale by default for a sleeker look and lets the CX logo blend into the title bar, Nav selector and collection-page headers. Phone layouts, the 343 free resources, IDs, notes and addition dates are unchanged.

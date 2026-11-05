@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="clear-logo-title clear-logo-description">
+  <title id="clear-logo-title">The Controls Exchange</title>
+  <desc id="clear-logo-description">An open charcoal C surrounds two crossing red signal paths, joining controls knowledge and community.</desc>
+  <path d="M83 25H47L23 49V79L47 103H83" fill="none" stroke="#4F545A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M76 47L108 79M108 47L76 79" fill="none" stroke="#ED3224" stroke-width="11" stroke-linecap="round"/>
+</svg>
