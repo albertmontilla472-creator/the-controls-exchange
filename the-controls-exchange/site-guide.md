@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.42 (November 4, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.43 (November 4, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -73,7 +73,7 @@ Top-level keys:
 | `niagaraGenerations` (3) | `ax`, `n4`, `n5` labels and descriptions. |
 | `collectionPages` (11) | Static page file → workbench folder id. |
 | `release` | `version`, `updated`, `changes` of the current edition. |
-| `maintenance` (60) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
+| `maintenance` (61) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
 | `publicSite` | Brand, title, description, repo URLs, `updated`, and the privacy/terms text. |
 | `security.approvedHosts` | Allowlist of link hostnames. **A URL whose host is not listed renders as `#`.** |
 | `retiredResourceIds` | Ids that were removed. They are reserved forever so old saved notes never attach to a different resource. |
@@ -136,9 +136,10 @@ Count badges show immediate contents. They are computed, never hand-typed.
 
 - Interface/function artwork is original inline SVG in `iconArt`; reviewed manufacturer/protocol marks identify their learning subjects. Local logo files are pinned separately.
 - **Interface icons are Lucid-style** (edition 5.42): original inline SVGs that fill with shared gradients `url(#cxl-*)` (gray metal, gold, blue, red, paper, folder yellow…). The gradients are defined once per page in `<svg class="icon-defs">`: at the top of `<body>` in `index.html`, and via `ICON_DEFS` from `tools/codex/icons.mjs` in collection pages. Never put gradient definitions inside an individual icon (repeated ids break when an icon is hidden). Product drawings (Optimizer, IRM, Spyder, CIPer, controller, lineup) and the Honeywell mark are not part of the Lucid set.
-- **Optimizer Workbench proportions** (edition 5.42) live in one desktop-only block at the end of the stylesheet (`@media(min-width:651px)`): 29px title bar, inset 46px red menu bar (#ec3125, rounded bottom corners), 45px toolbar, 38px location bar (#6d6e77), charcoal #333 frame and status bar, tabbed "▾ Nav" headers, 29px tree rows at 14px. Phones keep the mobile rules. The default Nav width is 340px (`#learning-layout` rule plus three places in the sidebar-resize script).
+- **Optimizer Workbench colors and shapes at compact sizes** (edition 5.43): one desktop-only block at the end of the stylesheet (`@media(min-width:651px)`) sets colors and shapes only: #f3f3f3 title bar, inset red menu bar (#ec3125, rounded bottom corners), #ebebeb toolbar, #6d6e77 location bar, charcoal #333 frame and status bar, tabbed "▾ Nav" headers. All sizes are the edition 5.41 ones from the older rules (22/30/30/26px chrome, 24/26px pane headers, 25px tree rows at 12px, 260px default Nav width). Albert rejected larger sizes; measure against 5.41 before changing any size. Phones keep the mobile rules.
 - **Change history** (Home, bottom): rendered from `maintenance[].publicSummary`; editions without one are not shown.
 - **Nav tree and Learning palette scrolling** (edition 5.42): rows keep their full names (`width:max-content` on the top-level rows, no ellipsis on `.folder-name`), so `.track-nav` and `.palette-body` scroll horizontally with thin gray scrollbars (`scrollbar-color` plus `::-webkit-scrollbar` for Safari). Folder counts are `position:sticky; right:0` so they stay visible while scrolling.
+- **Every folder opens in the tree** (edition 5.43): `treeMarkup` lists a folder's own resources (videos first, then documents) whenever it has no visible subfolders and is a `library` or `docs` view, as well as for folders marked `expandResources`. Only Home stays a plain row. Count badges are unchanged by this.
 - Wide wordmarks (Modbus, LoRaWAN, LoRa) are 192×72 files shown in a 40×18 slot via `.wb-icon-protocol-*` CSS rules; square marks use the normal 16×16 slot. White-only official marks sit on their owner's background color (LoRaWAN on LoRa Alliance blue #009FE3, LoRa on dark).
 - Video rows show the **creator's logo** via `creatorIconByProvider` (provider name → icon key). The key is either an `iconArt` entry or `icons/<key>.png`. Documents always show the document icon. Unknown or unverified creators show the generic video icon. Don't guess a logo.
 - New logo: verify it is the creator's real mark, save it as a 128×128 PNG in `icons/`, add the mapping, then run `check-site.py --write-icon-manifest` to pin it.
