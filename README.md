@@ -58,3 +58,6 @@ Edition 5.43 returns the workbench to its previous compact sizes while keeping t
 
 
 Edition 5.44 displays the desktop workbench at 90% scale by default for a sleeker look and lets the CX logo blend into the title bar, Nav selector and collection-page headers. Phone layouts, the 343 free resources, IDs, notes and addition dates are unchanged.
+
+
+Edition 5.45 makes the gray arrows the only way to expand or collapse Nav folders; clicking a folder name opens it without changing the tree, and the Right and Left arrow keys expand and collapse. Lessons inside every expandable folder open their details. The 343 free resources, IDs, notes and addition dates are unchanged.

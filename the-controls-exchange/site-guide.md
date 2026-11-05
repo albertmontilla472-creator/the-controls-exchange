@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.44 (November 4, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.45 (November 4, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -73,7 +73,7 @@ Top-level keys:
 | `niagaraGenerations` (3) | `ax`, `n4`, `n5` labels and descriptions. |
 | `collectionPages` (11) | Static page file → workbench folder id. |
 | `release` | `version`, `updated`, `changes` of the current edition. |
-| `maintenance` (62) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
+| `maintenance` (63) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
 | `publicSite` | Brand, title, description, repo URLs, `updated`, and the privacy/terms text. |
 | `security.approvedHosts` | Allowlist of link hostnames. **A URL whose host is not listed renders as `#`.** |
 | `retiredResourceIds` | Ids that were removed. They are reserved forever so old saved notes never attach to a different resource. |
@@ -142,6 +142,7 @@ Count badges show immediate contents. They are computed, never hand-typed.
 - **Change history** (Home, bottom): rendered from `maintenance[].publicSummary`; editions without one are not shown.
 - **Nav tree and Learning palette scrolling** (edition 5.42): rows keep their full names (`width:max-content` on the top-level rows, no ellipsis on `.folder-name`), so `.track-nav` and `.palette-body` scroll horizontally with thin gray scrollbars (`scrollbar-color` plus `::-webkit-scrollbar` for Safari). Folder counts are `position:sticky; right:0` so they stay visible while scrolling.
 - **Every folder opens in the tree** (edition 5.43): `treeMarkup` lists a folder's own resources (videos first, then documents) whenever it has no visible subfolders and is a `library` or `docs` view, as well as for folders marked `expandResources`. Only Home stays a plain row. Count badges are unchanged by this.
+- **Expanding is arrow-only** (edition 5.45): `openFolderEvent` calls `preventDefault()` for clicks on a folder `summary` outside its `[data-disclosure]` triangle, so the native `<details>` toggle only happens from the triangle. A `keydown` handler on `#track-nav` maps ArrowRight/ArrowLeft to expand/collapse. Tree lessons open Properties in any folder that lists them (`folderAllows`, not `expandResources`).
 - Wide wordmarks (Modbus, LoRaWAN, LoRa) are 192×72 files shown in a 40×18 slot via `.wb-icon-protocol-*` CSS rules; square marks use the normal 16×16 slot. White-only official marks sit on their owner's background color (LoRaWAN on LoRa Alliance blue #009FE3, LoRa on dark).
 - Video rows show the **creator's logo** via `creatorIconByProvider` (provider name → icon key). The key is either an `iconArt` entry or `icons/<key>.png`. Documents always show the document icon. Unknown or unverified creators show the generic video icon. Don't guess a logo.
 - New logo: verify it is the creator's real mark, save it as a 128×128 PNG in `icons/`, add the mapping, then run `check-site.py --write-icon-manifest` to pin it.
