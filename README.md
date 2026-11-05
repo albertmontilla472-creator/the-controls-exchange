@@ -52,3 +52,6 @@ Edition 5.41 adds a LumenRadio folder under Wireless with six public videos and 
 
 
 Edition 5.42 gives the desktop workbench the look of Honeywell Optimizer Workbench at its full sizes, redraws every interface icon in the colorful Niagara Lucid style, adds a small Change history dropdown at the bottom of Home, and lets the Nav tree and Learning palette scroll sideways so long names can be read. Phone layouts, the 343 free resources, IDs, notes and addition dates are unchanged.
+
+
+Edition 5.43 returns the workbench to its previous compact sizes while keeping the Optimizer colors and shapes, Lucid-style icons, Change history and side-scrolling. Every Nav tree folder that holds lessons or documents now opens to list them, and the unused square beside the Learning palette heading is gone. The 343 free resources, IDs, notes and addition dates are unchanged.
