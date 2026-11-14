@@ -7,6 +7,11 @@ import {assertResourceReportUrl} from './resource-report.mjs';
 // Reviewed against the published v3.1 link inventory. New hosts require review;
 // neither a suffix match nor a host found in newly imported content approves it.
 export const APPROVED_HOSTS=Object.freeze([
+ // Official CODESYS online help and the PLCopen standards organization, reviewed November 14, 2026.
+ 'content.helpme-codesys.com',
+ 'www.plcopen.org',
+ // Honeywell's official press releases and product-security bulletins (incl. Tridium), reviewed November 14, 2026.
+ 'www.honeywell.com',
  // LumenRadio's own W-BACnet documentation, reviewed November 3, 2026.
  'lumenradio.com',
  // Original protocol learning and publisher homepages reviewed November 3, 2026.
@@ -140,6 +145,7 @@ export function validatePublicData(data){
   if(item.track==='niagara'&&(!Array.isArray(item.niagaraVersions)||!item.niagaraVersions.length||new Set(item.niagaraVersions).size!==item.niagaraVersions.length||item.niagaraVersions.some(version=>!generations.has(version))))throw Error('Invalid Niagara generation membership: '+item.id);
   if(item.serviceModules!==undefined&&(!Array.isArray(item.serviceModules)||!item.serviceModules.length||new Set(item.serviceModules).size!==item.serviceModules.length||item.serviceModules.some(id=>!slugId.test(id)||reservedIds.has(id))))throw Error('Invalid station service module membership: '+item.id);
   if(item.protocols!==undefined&&(!Array.isArray(item.protocols)||!item.protocols.length||new Set(item.protocols).size!==item.protocols.length||item.protocols.some(protocol=>!['wireless','bacnet','modbus','lon','n2'].includes(protocol))))throw Error('Invalid communication protocol membership: '+item.id);
+  if(item.plcs!==undefined&&(!Array.isArray(item.plcs)||!item.plcs.length||new Set(item.plcs).size!==item.plcs.length||item.plcs.some(plc=>!['honeywell-qronox'].includes(plc))))throw Error('Invalid PLC membership: '+item.id);
   if(item.protocolSections!==undefined&&(!Array.isArray(item.protocolSections)||!item.protocolSections.length||new Set(item.protocolSections).size!==item.protocolSections.length||item.protocolSections.some(section=>!PROTOCOL_SECTIONS.includes(section)||!item.protocols?.includes(section.split('-')[0]))))throw Error('Invalid communication protocol section: '+item.id);
   if(item.platformSections!==undefined&&(!Array.isArray(item.platformSections)||!item.platformSections.length||new Set(item.platformSections).size!==item.platformSections.length||item.platformSections.some(section=>!['commissioning','software-manager','station-copier','application-director','tcp-ip','administration','backup'].includes(section))||item.track!=='niagara'||item.tool!=='Niagara platform'))throw Error('Invalid Niagara platform scope: '+item.id);
   if(item.track==='ciper'&&(!Array.isArray(item.ciperModels)||!item.ciperModels.length||new Set(item.ciperModels).size!==item.ciperModels.length||item.ciperModels.some(model=>!['30','50'].includes(model))))throw Error('Invalid CIPer model membership: '+item.id);

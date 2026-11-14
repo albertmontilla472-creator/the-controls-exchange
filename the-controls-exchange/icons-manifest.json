@@ -31,6 +31,11 @@
    "width": 128,
    "height": 128
   },
+  "icons/creator-connectiontimeout.png": {
+   "sha256": "a56564d601075a42e7352b9bffc12bbdbdc070bddc1c238edebecf02e9b55eb9",
+   "width": 128,
+   "height": 128
+  },
   "icons/creator-contemporary-controls.png": {
    "sha256": "0b529dad5e4366188c82f7da4113680c8f14451afcb04b78a2991ef09fb90c7c",
    "width": 128,
@@ -98,6 +103,11 @@
   },
   "icons/creator-realpars.png": {
    "sha256": "b70b948b789903a8cb28d1bc21e04dc2a011cb2f02af996e5b7f3086952ae70b",
+   "width": 128,
+   "height": 128
+  },
+  "icons/creator-saia-burgess-controls.png": {
+   "sha256": "d3bbee13df1bd68131c77c38d877a29f14f6258f60e72e060c8ec9aec8828efd",
    "width": 128,
    "height": 128
   },

@@ -20,6 +20,9 @@ These override anything in the *(inferred)* sections below. Both Claude and Code
 - **A small "Change history" dropdown at the bottom of Home** (November 4, 2026), listing every edition with its date. Only short, public, non-sensitive summaries appear there (`publicSummary`); internal notes never do.
 - **No selected-row highlight**, reconfirmed November 4, 2026, even though Optimizer shows one.
 - **Full names in the Nav tree and Learning palette with side-to-side scrolling** (November 4, 2026): no "…" truncation; a thin, light-gray scrollbar appears only when a name is wider than the pane, and it should stay unobtrusive.
+- **PLC section last under Drivers, with a Honeywell QronoX folder** (November 14, 2026). Albert chose to place PLC after Distech. When public product-specific programming lessons don't exist (QronoX had none), he wants general IEC 61131-3 / CODESYS lessons added too, clearly labeled as general rather than product-specific. Broudy Precision is a preferred first place to look for new Honeywell material.
+- **Programming paths can be added on request** (November 14, 2026): Albert asked for a Niagara Program Objects folder under Programming with all free videos and documents. He placed it directly below the Niagara kitControl path.
+- **Keep the site news current** (November 14, 2026): Albert asked for a news refresh; use dated, official sources and replace items that newer notices supersede.
 - **Preview first** (November 3, 2026). For any website change, show desktop and phone screenshots and a short summary. Nothing goes live until Albert says "publish". After that, the assistant publishes for him; he doesn't want to do the GitHub steps himself.
 
 ## Who
