@@ -12,6 +12,9 @@ export function normalizeControlsSearch(value){
   .replace(/\bcontroller\s+configuration\s+tool\b/g,'cct')
   .replace(/\bkit[\s-]*control\b/g,'kitcontrol').replace(/\bn[\s-]+rio\b/g,'nrio')
   .replace(/\bms[\s/-]*tp\b/g,'mstp').replace(/\bft[\s-]*10\b/g,'ft10').replace(/\bip[\s-]*852\b/g,'ip852').replace(/\blora[\s-]+wan\b/g,'lorawan')
+  .replace(/\bpcd\s*3[\s.-]*m[\s.-]*6893\b/g,'pcd3m6893').replace(/\b(?:kronox|chronox|qronos)\b/g,'qronox')
+  .replace(/\biec[\s-]*61131(?:[\s-]*3)?\b/g,'iec61131').replace(/\bco[\s-]+de[\s-]+sys\b/g,'codesys').replace(/\bplcs\b/g,'plc')
+  .replace(/\bprogram\s+objects\b/g,'program object')
   .replace(/\//g,' ')
   .replace(/\s+/g,' ').trim();
 }

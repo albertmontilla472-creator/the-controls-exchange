@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.45 (November 4, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.46 (November 14, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -62,10 +62,10 @@ Top-level keys:
 | Key | Purpose |
 | --- | --- |
 | `groups` (7) | One per track: `niagara`, `optimizer`, `spyder`, `jci`, `distech`, `ciper`, `bas`. Name, intro, main source, note. |
-| `items` (343) | Every learning resource (see below). |
+| `items` (381) | Every learning resource (see below). |
 | `sessions` (7) | Beginner study sequence blocks (Home "New to BAS?" route). |
-| `programming` (5) | Programming paths: `kitcontrol`, `irm`, `classic-spyder`, `cct`, `gfx`. Each lists resource ids in order. |
-| `recommended` | `publishers` (33 creators): name, channel, website, focus, description, access, scope. |
+| `programming` (6) | Programming paths: `kitcontrol`, `irm`, `classic-spyder`, `cct`, `gfx`, `niagara-program-objects`. Each lists resource ids in order. |
+| `recommended` | `publishers` (37 creators): name, channel, website, focus, description, access, scope. |
 | `news` | Dated BAS news & references (6 items) plus review date. |
 | `niagara5` | Release watch cards. |
 | `software` (5), `downloads` (3) | Free tools and the original worksheets. |
@@ -73,7 +73,7 @@ Top-level keys:
 | `niagaraGenerations` (3) | `ax`, `n4`, `n5` labels and descriptions. |
 | `collectionPages` (11) | Static page file → workbench folder id. |
 | `release` | `version`, `updated`, `changes` of the current edition. |
-| `maintenance` (63) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
+| `maintenance` (64) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
 | `publicSite` | Brand, title, description, repo URLs, `updated`, and the privacy/terms text. |
 | `security.approvedHosts` | Allowlist of link hostnames. **A URL whose host is not listed renders as `#`.** |
 | `retiredResourceIds` | Ids that were removed. They are reserved forever so old saved notes never attach to a different resource. |
@@ -111,19 +111,20 @@ Rules:
 - `format: "Reference"` means documentation (listed under Documentation / PDFs, document icon). Everything else is a video or collection.
 - `cue` is derived from format: videos use "Watch and explain the signal path, then note one thing you would test at the equipment."; references use "Find the matching task in this reference and check its documented release and hardware scope."; playlists/collections use "Use this collection to choose a lesson that supports the sequence or problem you are working on."
 - `practiceAccess` default: "Learning material is free to view. Repeating vendor-tool demonstrations may require licensed software and compatible hardware." (BAS track and VYKON Pro have their own wording; copy from a sibling record.)
-- Track-specific fields: Niagara needs `niagaraVersions` (`ax`/`n4`/`n5`); CIPer needs `ciperModels` (`30`/`50`); VYKON Pro uses `serviceModules: ["vykon-pro"]`; Platform lessons use `platformSections` (`commissioning`, `software-manager`, `tcp-ip`, `backup`, …).
+- Track-specific fields: Niagara needs `niagaraVersions` (`ax`/`n4`/`n5`); CIPer needs `ciperModels` (`30`/`50`); VYKON Pro uses `serviceModules: ["vykon-pro"]`; Platform lessons use `platformSections` (`commissioning`, `software-manager`, `tcp-ip`, `backup`, …); PLC lessons use `plcs` (`honeywell-qronox`), in both the flat fields and `metadata`.
 - Only **free, public** material. No paid courses, enrollment catalogs, partner-only or login-gated material, no affiliate links.
 
 ## 5. How the Nav tree is built (automatic)
 
 The app script builds the folder tree from the data at load time (`addFolder(...)` calls). You rarely edit the tree directly:
 
-- `Drivers` → `Communication protocols` (first; see below), `Niagara` (→ AX / N4 / N5 → Videos & collections → per-tool → per-topic folders, plus Documentation), `Honeywell` (→ Optimizer/IRM, Spyder, CIPer → Model 30 / Model 50), `JCI`, `Distech`. Each distinct `tool` in a track gets its own folder, and a tool folder gets topic subfolders when its resources span more than one `topic`. (For Niagara, tool folders are built from videos only and sit under each generation's Videos & collections.)
+- `Drivers` → `Communication protocols` (first; see below), `Niagara` (→ AX / N4 / N5 → Videos & collections → per-tool → per-topic folders, plus Documentation), `Honeywell` (→ Optimizer/IRM, Spyder, CIPer → Model 30 / Model 50), `JCI`, `Distech`, `PLC` (last; see below). Each distinct `tool` in a track gets its own folder, and a tool folder gets topic subfolders when its resources span more than one `topic`. (For Niagara, tool folders are built from videos only and sit under each generation's Videos & collections.)
 - `Services` → Alarms, Histories, Schedules, Security, Tags / queries (by `topic`), and VYKON Pro (by `serviceModules`).
 - `Platform` → Commissioning Wizard, Software Manager, TCP/IP Configuration, Backup & restore (by `platformSections`), Documentation.
 - `Communication protocols` (first under `Drivers`) → Wireless (LoRaWAN, LoRa radio, LumenRadio), BACnet (General, IP, MS/TP), Modbus (General, TCP, RTU), Lon (General, FT-10, IP-852) and N2. Membership comes from `protocols` (the family) and `protocolSections` (one of `wireless-lorawan`, `wireless-lora-radio`, `wireless-lumenradio`, `bacnet-general`, `bacnet-ip`, `bacnet-mstp`, `modbus-general`, `modbus-tcp`, `modbus-rtu`, `lon-general`, `lon-ft10`, `lon-ip852`). `*-general` holds resources that cover both connection types or don't say which. Each folder lists its resources directly, videos first; a section folder appears only when it has resources. N2 has no sections. Every protocol folder uses the protocol owner's mark (`nodeIcon` fixed map). Old `protocol-*-videos` / `-docs` links redirect to their protocol folder. Shared lessons retain one id.
+- `PLC` (last under `Drivers`, edition 5.46) → `Honeywell QronoX` (`plc-honeywell-qronox`, Honeywell mark; the folder icon `plc` is an original Lucid DIN-rail PLC). Membership comes from `plcs` (like `protocols`); `plcsOnly`/`plcFamily` in `folderAllows`. PLC lessons live in track `bas` with their own `tool` (`QronoX PLC`, `IEC 61131-3 programming`), so they stay out of BAS fundamentals/advanced and `bas-fundamentals.html` (`excludePlcs`). QronoX material comes first; general IEC 61131-3 / CODESYS lessons follow and are labeled general in `generation`, `version` and `note` (Albert, November 14, 2026). The search label is `QronoX PLC (Honeywell, Saia PCD3.M6893)` so plain “QronoX” finds the folder first. A new PLC family needs a new `plcs` value, a folder in the app and the `security.mjs` allowlist.
 - `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first) and `BAS fundamentals` (tool `BAS fundamentals`).
-- `Programming` → one folder per `programming[]` path.
+- `Programming` → one folder per `programming[]` path (six since 5.46; `Niagara Program Objects` is last and uses the Niagara mark).
 - `Files` → Documentation, Recommended resources, Software & worksheets. `History` → Controls news, Release watch, Sources & updates.
 
 So a new `tool` or `topic` value creates a new folder. Reuse existing values unless a new folder is intended. Folder icons come from `nodeIcon` (topic → tool → keyword fallbacks).
