@@ -64,7 +64,7 @@ Top-level keys:
 | `groups` (7) | One per track: `niagara`, `optimizer`, `spyder`, `jci`, `distech`, `ciper`, `bas`. Name, intro, main source, note. |
 | `items` (381) | Every learning resource (see below). |
 | `sessions` (7) | Beginner study sequence blocks (Home "New to BAS?" route). |
-| `programming` (6) | Programming paths: `kitcontrol`, `irm`, `classic-spyder`, `cct`, `gfx`, `niagara-program-objects`. Each lists resource ids in order. |
+| `programming` (6) | Programming paths: `kitcontrol`, `niagara-program-objects`, `irm`, `classic-spyder`, `cct`, `gfx`. Each lists resource ids in order. |
 | `recommended` | `publishers` (37 creators): name, channel, website, focus, description, access, scope. |
 | `news` | Dated BAS news & references (6 items) plus review date. |
 | `niagara5` | Release watch cards. |
@@ -124,7 +124,7 @@ The app script builds the folder tree from the data at load time (`addFolder(...
 - `Communication protocols` (first under `Drivers`) → Wireless (LoRaWAN, LoRa radio, LumenRadio), BACnet (General, IP, MS/TP), Modbus (General, TCP, RTU), Lon (General, FT-10, IP-852) and N2. Membership comes from `protocols` (the family) and `protocolSections` (one of `wireless-lorawan`, `wireless-lora-radio`, `wireless-lumenradio`, `bacnet-general`, `bacnet-ip`, `bacnet-mstp`, `modbus-general`, `modbus-tcp`, `modbus-rtu`, `lon-general`, `lon-ft10`, `lon-ip852`). `*-general` holds resources that cover both connection types or don't say which. Each folder lists its resources directly, videos first; a section folder appears only when it has resources. N2 has no sections. Every protocol folder uses the protocol owner's mark (`nodeIcon` fixed map). Old `protocol-*-videos` / `-docs` links redirect to their protocol folder. Shared lessons retain one id.
 - `PLC` (last under `Drivers`, edition 5.46) → `Honeywell QronoX` (`plc-honeywell-qronox`, Honeywell mark; the folder icon `plc` is an original Lucid DIN-rail PLC). Membership comes from `plcs` (like `protocols`); `plcsOnly`/`plcFamily` in `folderAllows`. PLC lessons live in track `bas` with their own `tool` (`QronoX PLC`, `IEC 61131-3 programming`), so they stay out of BAS fundamentals/advanced and `bas-fundamentals.html` (`excludePlcs`). QronoX material comes first; general IEC 61131-3 / CODESYS lessons follow and are labeled general in `generation`, `version` and `note` (Albert, November 14, 2026). The search label is `QronoX PLC (Honeywell, Saia PCD3.M6893)` so plain “QronoX” finds the folder first. A new PLC family needs a new `plcs` value, a folder in the app and the `security.mjs` allowlist.
 - `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first) and `BAS fundamentals` (tool `BAS fundamentals`).
-- `Programming` → one folder per `programming[]` path (six since 5.46; `Niagara Program Objects` is last and uses the Niagara mark).
+- `Programming` → one folder per `programming[]` path (six since 5.46; `Niagara Program Objects` sits directly below kitControl at Albert’s request and uses the Niagara mark).
 - `Files` → Documentation, Recommended resources, Software & worksheets. `History` → Controls news, Release watch, Sources & updates.
 
 So a new `tool` or `topic` value creates a new folder. Reuse existing values unless a new folder is intended. Folder icons come from `nodeIcon` (topic → tool → keyword fallbacks).
