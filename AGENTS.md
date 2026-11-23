@@ -1,6 +1,6 @@
 # Working on The Controls Exchange
 
-Instructions for AI coding agents (Codex, Claude and others). Albert Montilla (Smarty.ctrl) maintains this free BAS learning directory with more than one assistant, so everything shared lives in the repo.
+Instructions for AI coding agents. Albert Montilla (Smarty.ctrl) maintains this free BAS learning directory with Claude Code. Since November 23, 2026 Claude is the only assistant on the project (Albert cancelled Codex), and everything shared still lives in the repo.
 
 **Before any change, read the project folder `the-controls-exchange/`**: `site-guide.md` (how the site works), `release-checklist.md` (how to ship), `maintainer-profile.md` (Albert's preferences). Update those files when you learn something new.
 

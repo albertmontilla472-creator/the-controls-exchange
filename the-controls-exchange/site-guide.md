@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude, Codex or a person) changing the site. It describes the site as of **edition 5.46 (November 14, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude or a person) changing the site. It describes the site as of **edition 5.46 (November 14, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -190,6 +190,8 @@ node the-controls-exchange/tools/smoke-test.js
 The first is static (hashes, data rules, versions, links, icons, collection pages). The second loads every page in headless Chromium at desktop and phone sizes and fails on any console error, which is how a CSP mistake shows up.
 
 ## Codex tooling
+
+Codex was retired on November 23, 2026. Claude maintains these tools; the names below are kept for continuity.
 
 ### Original local build
 

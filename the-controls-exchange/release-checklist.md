@@ -47,5 +47,5 @@ Both must end with 0 errors / "All pages loaded without errors". Also open the p
 ## 5. Publish (only after Albert says "publish")
 
 - Commit message style: `Release 5.39: <what changed>` or `<What changed> (5.39)`.
-- `main` is live. Claude pushes its `claude/...` branch, opens a pull request and merges it into `main`. Codex commits to `main`. Neither publishes before Albert's OK.
+- `main` is live. Claude pushes its `claude/...` branch, opens a pull request and merges it into `main`, only after Albert's OK. (Codex, which used to commit to `main` directly, was retired on November 23, 2026.)
 - GitHub Pages usually updates within a minute or two of the change reaching `main`.

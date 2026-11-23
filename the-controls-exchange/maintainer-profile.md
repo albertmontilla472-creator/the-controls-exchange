@@ -6,8 +6,9 @@ Sections marked *(inferred)* were reconstructed from the public release history 
 
 ## Confirmed by Albert
 
-These override anything in the *(inferred)* sections below. Both Claude and Codex follow them.
+These override anything in the *(inferred)* sections below. Claude follows them.
 
+- **Codex is out of the project** (November 23, 2026). Albert cancelled his Codex subscription. Claude is the only assistant: it maintains the site, the shared notes and `tools/codex/`, and does every GitHub step after Albert says "publish".
 - **Only make changes when absolutely confident; otherwise ask first** (November 3, 2026). Albert prefers being asked to having an assistant guess.
 - **Brand marks, not generic icons, on new folders** (November 3, 2026). A folder for a protocol, manufacturer or product shows that owner's verified mark. Get the real logo rather than falling back to a generic symbol.
 - **Everything new is searchable** (November 3, 2026). Anything added must come up in the top "Find by name" search, including common spellings such as MSTP for MS/TP.
@@ -65,7 +66,7 @@ These override anything in the *(inferred)* sections below. Both Claude and Code
 
 - Often gives short, direct requests and adds corrections while work is underway. Related requests can be completed together in one meaningful edition; a separate edition is not required for every chat message.
 - Meaningful website changes receive a new edition, with existing content and visitor data preserved. Documentation-only changes and reviews that find nothing useful do not bump the edition. Publishing follows the preview-first rule above.
-- Wants to use both Claude and Codex on this project. Both read `AGENTS.md` at the repository root and this folder.
+- Wanted to use both Claude and Codex on this project (until November 23, 2026, when he retired Codex). Claude reads `AGENTS.md` at the repository root and this folder.
 
 ## Imported from Codex / ChatGPT
 
