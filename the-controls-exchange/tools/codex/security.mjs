@@ -7,6 +7,11 @@ import {assertResourceReportUrl} from './resource-report.mjs';
 // Reviewed against the published v3.1 link inventory. New hosts require review;
 // neither a suffix match nor a host found in newly imported content approves it.
 export const APPROVED_HOSTS=Object.freeze([
+ // EnOcean's LON wiki and Echelon document archive, METZ CONNECT's U10 page and ABB's technical library, reviewed November 23, 2026.
+ 'enoceanwiki.atlassian.net',
+ 'downloads.echelon.com',
+ 'www.metz-connect.com',
+ 'library.e.abb.com',
  // Official CODESYS online help and the PLCopen standards organization, reviewed November 14, 2026.
  'content.helpme-codesys.com',
  'www.plcopen.org',

@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude or a person) changing the site. It describes the site as of **edition 5.46 (November 14, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude or a person) changing the site. It describes the site as of **edition 5.47 (November 23, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -22,7 +22,7 @@ The interface is modelled on a **Niagara / Honeywell Optimizer Workbench** (menu
 | `privacy.html`, `terms.html` | Static notices. Their text mirrors `publicSite.privacy` / `publicSite.terms` in the data (keep both in sync). Their `<style>` is an **exact copy** of `index.html`'s `<style>`. No scripts. |
 | `controls-exchange-mark.svg`, `-logo.svg`, `-icon.svg`, `favicon.svg`, `controls-exchange-share.png` | Brand artwork (the red "CX" mark, Home logo, social share image 1200×630). |
 | `icons/` | Local logo files: `creator-*.png` (128×128 creator logos), `brand-vykon.png`, `ec-gfxprogram.png`, `facility-explorer.png`, `niagara-generations.webp`. Fingerprints are pinned in `the-controls-exchange/icons-manifest.json`. |
-| `downloads/*.md` | Three original study worksheets (signal path, BACnet point checkout, programming practice). |
+| `downloads/*.md` | Four original study worksheets (signal path, BACnet point checkout, programming practice, LON FT-10 and Spyder field checklist). |
 | `README.md` | Public project description. Each release appends an "Edition X.YZ" paragraph. |
 | `SECURITY.md`, `robots.txt`, `sitemap.xml` | Security policy, crawler rules, and the list of public collection pages. |
 
@@ -62,18 +62,18 @@ Top-level keys:
 | Key | Purpose |
 | --- | --- |
 | `groups` (7) | One per track: `niagara`, `optimizer`, `spyder`, `jci`, `distech`, `ciper`, `bas`. Name, intro, main source, note. |
-| `items` (381) | Every learning resource (see below). |
+| `items` (411) | Every learning resource (see below). |
 | `sessions` (7) | Beginner study sequence blocks (Home "New to BAS?" route). |
 | `programming` (6) | Programming paths: `kitcontrol`, `niagara-program-objects`, `irm`, `classic-spyder`, `cct`, `gfx`. Each lists resource ids in order. |
-| `recommended` | `publishers` (37 creators): name, channel, website, focus, description, access, scope. |
+| `recommended` | `publishers` (40 creators): name, channel, website, focus, description, access, scope. |
 | `news` | Dated BAS news & references (6 items) plus review date. |
 | `niagara5` | Release watch cards. |
-| `software` (5), `downloads` (3) | Free tools and the original worksheets. |
+| `software` (8), `downloads` (4) | Free tools and the original worksheets. |
 | `sources` (10), `learningCards` (3) | Sources & updates page and Home cards. |
 | `niagaraGenerations` (3) | `ax`, `n4`, `n5` labels and descriptions. |
 | `collectionPages` (11) | Static page file → workbench folder id. |
 | `release` | `version`, `updated`, `changes` of the current edition. |
-| `maintenance` (64) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
+| `maintenance` (65) | Full release history, newest first: `version`, `date`, `review`, `changes`. Shown on Sources & updates. |
 | `publicSite` | Brand, title, description, repo URLs, `updated`, and the privacy/terms text. |
 | `security.approvedHosts` | Allowlist of link hostnames. **A URL whose host is not listed renders as `#`.** |
 | `retiredResourceIds` | Ids that were removed. They are reserved forever so old saved notes never attach to a different resource. |
