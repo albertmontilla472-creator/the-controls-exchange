@@ -60,6 +60,14 @@ Honeywell status LED (63-2685, Table 8): off = no power, low voltage or damaged;
 
 Keep laptop tools to monitoring and tests on a network the JACE manages; commissioning from a second tool can conflict with the supervisor. Honeywell routes Spyder tool work through the JACE's LON driver.
 
+## Connecting a laptop with a USB interface (U10)
+
+- [ ] Normal path for Spyder work: laptop to the JACE over IP, open the station, then Lon Device Manager → Discover → Match → Spyder Download. The JACE's FT-10 port does the LON work.
+- [ ] Workbench alone does not discover LON devices; discovery runs in a station's LonWorks network. A station on the laptop using the U10 needs the LonWorks driver and the Spyder feature licensed (or "-ILC" controllers). Tridium does not support the LON FTT-10 USB adapter in Niagara 4 (results not guaranteed); Honeywell's WEBs-N4 guide says to use LON tunneling through a JACE or LON/IP.
+- [ ] Commissioning or downloading from a laptop station takes the controller away from the JACE. Afterwards, Match and download it from the JACE again.
+- [ ] Direct wiring: U10 wires to Spyder terminals 7 and 8 (Net-1/Net-2), either polarity; the controller still needs 24 Vac on 1–2 and earth on 3.
+- [ ] Bench (laptop and one controller only): one 209541B terminator across 7–8. Live bus: add no terminator; the bus already has its own.
+
 ## Replacing a controller (Honeywell 63-2685 and 31-00089)
 
 1. Record the old Neuron ID, model and station name. Lift the terminal blocks off with the wiring attached.
