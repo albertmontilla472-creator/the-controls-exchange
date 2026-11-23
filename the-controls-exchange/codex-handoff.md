@@ -1,5 +1,7 @@
 # Bringing Codex / ChatGPT knowledge into this project
 
+> **Historical.** Albert retired Codex on November 23, 2026. These prompts were used once, in November 2026; nothing here needs to be run again.
+
 Codex and ChatGPT keep their memory in their own chat history. Claude can't read it. To share it, ask them to write it down, then put it where both tools look: this folder.
 
 ## Option A: Codex (it can edit this repository)

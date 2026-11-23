@@ -1,6 +1,6 @@
 # Claude instructions
 
-Claude and Codex share the same project instructions. They live in `AGENTS.md` (imported below) and the `the-controls-exchange/` project folder. Put new shared rules there, not here.
+The project instructions live in `AGENTS.md` (imported below) and the `the-controls-exchange/` project folder. Put new shared rules there, not here. Codex was retired on November 23, 2026; Claude is the only assistant and does every GitHub step for Albert.
 
 @AGENTS.md
 
