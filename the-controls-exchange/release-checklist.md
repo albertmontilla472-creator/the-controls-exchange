@@ -20,11 +20,13 @@ Changes that only touch this `the-controls-exchange/` folder, `AGENTS.md` or `CL
 4. `?v=` cache-busters on **every** HTML page (`controls-exchange-mark.svg?v=…`, `controls-exchange-logo.svg?v=…`): 4 places in `index.html`, 2 in each collection page, 1 in privacy/terms.
 5. `privacy.html` and `terms.html`: "Updated <date>" line.
 6. `README.md`: append a short paragraph, e.g. `Edition 5.39 adds …`. Keep the counts accurate (resources, direct videos, documentation references, credited publishers; `check-site.py` prints them).
-7. If the CSS in `index.html` changed: copy the identical `<style>` into `privacy.html` and `terms.html`.
+7. Privacy and terms use `the-controls-exchange/tools/codex/legal.css` (edition 5.48); the generator writes their `<style>` and hash. Change `legal.css` only when those pages should look different. After bumping the edition, re-run `python3 the-controls-exchange/tools/render-worksheets.py` so the printable worksheet pages carry the new `?v=`.
 8. `newInEdition`: `true` only on resources added in this edition. Set the previous edition's additions back to `false` (it shows as "New in this edition").
 9. `publicSummary` on the new `maintenance` entry: one short, public sentence for the Home Change history. No internal process, private details, security specifics or names of who asked. Without it the edition is not listed.
 
 Shortcut for steps 4, 5 and 7 plus all CSP hashes: after editing the data in `index.html` (steps 1–3), render with `node the-controls-exchange/tools/codex/generate-public.mjs --output-dir <folder outside the repo>` and copy back only the `.html` files that differ. Editions 5.40 and 5.41 were released this way.
+
+Dark theme and events (edition 5.48): after any visual change, run the axe pass in both themes (light, then with the `controls-exchange-theme-v1` storage key set to `dark`). If `404.html`'s CSS changes, rebuild its style with `theme-cli.mjs dark`. For BAS coming up, add only items whose date you read on the organizer's own page, add new link hosts to `APPROVED_HOSTS` and `security.approvedHosts`, and keep `events.reviewed` current.
 
 Release-note voice: what changed, then what was preserved ("All N learning records, saved notes, IDs, source links and true addition dates are preserved.").
 
@@ -37,6 +39,19 @@ node the-controls-exchange/tools/smoke-test.js
 ```
 
 Both must end with 0 errors / "All pages loaded without errors". Also open the page and look at the area you changed (desktop and phone width).
+
+Optional but recommended (edition 5.48):
+
+```bash
+# accessibility: install axe-core outside the repo, then
+CONTROLS_EXCHANGE_AXE=/path/to/node_modules/axe-core/axe.min.js node the-controls-exchange/tools/smoke-test.js
+# before/after screenshots against the live version
+git worktree add --detach ../cx-before origin/main
+node the-controls-exchange/tools/visual-compare.js ../cx-before . ../cx-compare
+python3 the-controls-exchange/tools/visual-diff.py ../cx-compare
+```
+
+The diff lists how much of each view changed and writes before | after | changes images; anything Albert didn't ask for should be close to 0%.
 
 ## 4. Preview for Albert
 

@@ -8,6 +8,8 @@
 // resource (a CSP hash mismatch shows up here as a console error).
 // Requires Playwright with Chromium installed: npm i -g playwright && npx playwright install chromium
 // Or set CONTROLS_EXCHANGE_CHROMIUM_PATH to an existing trusted Chrome/Chromium executable.
+// Optional accessibility pass (edition 5.48): set CONTROLS_EXCHANGE_AXE to a local axe.min.js
+// (npm install axe-core outside the repository) to also run WCAG 2.1 AA checks on key views.
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -57,6 +59,30 @@ const server = http.createServer((req, res) => {
       console.log(`${problems.length ? 'FAIL' : 'ok  '} ${label.padEnd(7)} ${file}${detail}`);
       for (const p of problems) console.log('      ' + p);
       await page.close();
+    }
+  }
+  const axePath = process.env.CONTROLS_EXCHANGE_AXE;
+  if (axePath) {
+    // Separate context: axe is injected, so CSP is bypassed only here, never in the load checks above.
+    const axe = fs.readFileSync(axePath, 'utf8');
+    const views = ['index.html#library/home', 'index.html#library/protocol-lon-ft10', 'index.html#news/news', 'index.html#events/events',
+      'index.html#software/downloads', 'index.html#recommended/recommended', 'index.html#programming/programming',
+      'niagara-4.html', 'privacy.html', 'lon-ft10-field-checklist.html', '404.html'];
+    for (const [label, viewport, isMobile] of [['desktop', { width: 1440, height: 900 }, false], ['phone', { width: 390, height: 844 }, true]]) {
+      const context = await browser.newContext({ viewport, isMobile, hasTouch: isMobile, bypassCSP: true });
+      for (const view of views) {
+        const page = await context.newPage();
+        await page.goto(base + view, { waitUntil: 'networkidle' });
+        await page.waitForTimeout(300);
+        await page.addScriptTag({ content: axe });
+        const violations = await page.evaluate(async () => (await axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } }))
+          .violations.map(v => `${v.id} ×${v.nodes.length}: ${v.nodes.slice(0, 2).map(n => n.target.join(' ')).join(', ')}`));
+        if (violations.length) failures++;
+        console.log(`${violations.length ? 'FAIL' : 'ok  '} a11y ${label.padEnd(7)} ${view}`);
+        for (const v of violations) console.log('      ' + v);
+        await page.close();
+      }
+      await context.close();
     }
   }
   await browser.close();

@@ -54,3 +54,5 @@ Also update `icons.mjs` when using this renderer: its immutable dimension/hash p
 are a separate validation gate. Never regenerate pins merely to accept an
 unexpected file. For manual inline edits, `--fix-hashes` belongs to `check-site.py`;
 the renderer calculates CSP hashes itself.
+
+Since edition 5.48 `privacy.html` and `terms.html` take their `<style>` from `legal.css` in this folder (only the rules those pages use) instead of the full workbench stylesheet. Edit `legal.css` when those pages should change; `--check` compares them like every other generated file.
