@@ -16,13 +16,14 @@ The interface is modelled on a **Niagara / Honeywell Optimizer Workbench** (menu
 
 | File | What it is |
 | --- | --- |
-| `index.html` (~899 KB) | The whole learning workbench app: inline CSS, an inline JSON data block with every resource, and one inline app script. |
+| `index.html` (~1.2 MB) | The whole learning workbench app: inline CSS, an inline JSON data block with every resource, and one inline app script. |
 | `collections.html` | Index of the 10 shareable collection pages. |
 | `bas-fundamentals.html`, `communication-protocols.html`, `niagara-ax.html`, `niagara-4.html`, `niagara-5.html`, `honeywell-optimizer-irm.html`, `honeywell-classic-spyder.html`, `honeywell-spyder-model-5-7.html`, `honeywell-ciper.html`, `jci-fx-cct.html`, `distech-gfx.html` | **Pre-rendered** static collection pages (work without JavaScript). Each has its own small CSS and a tiny search script. |
 | `privacy.html`, `terms.html` | Static notices. Their text mirrors `publicSite.privacy` / `publicSite.terms` in the data (keep both in sync). Since 5.48 their `<style>` is `the-controls-exchange/tools/codex/legal.css` (only the rules these pages use, about 6 KB). No scripts. |
 | `404.html` | Workbench-style "not found" page that GitHub Pages serves for any missing address. Links are absolute (`/the-controls-exchange/…`) and the CX mark is inline because the page can appear at any depth. No scripts. |
 | `*-worksheet.html`, `*-workbook.html`, `*-checkout.html`, `*-checklist.html` | Printable pages for each `downloads/*.md` worksheet, made by `the-controls-exchange/tools/render-worksheets.py` (run it after editing a worksheet or bumping the edition). |
 | `controls-exchange-mark.svg`, `-logo.svg`, `-icon.svg`, `favicon.svg`, `controls-exchange-share.png` | Brand artwork (the red "CX" mark, Home logo, social share image 1200×630). |
+| `controls-exchange-logo-dark.svg`, `controls-exchange-mark-clear-dark.svg` | Light-gray twins of the Home logo and the clear mark, shown only in the dark theme (edition 5.48). The red X stays the same. |
 | `icons/` | Local logo files: `creator-*.png` (128×128 creator logos), `brand-vykon.png`, `ec-gfxprogram.png`, `facility-explorer.png`, `niagara-generations.webp`. Fingerprints are pinned in `the-controls-exchange/icons-manifest.json`. |
 | `downloads/*.md` | Four original study worksheets (signal path, BACnet point checkout, programming practice, LON FT-10 and Spyder field checklist). |
 | `README.md` | Public project description. Each release appends an "Edition X.YZ" paragraph. |
@@ -164,8 +165,27 @@ Count badges show immediate contents. They are computed, never hand-typed.
 | `albert-ame-controls-study-v1` | Legacy key, read as a fallback when the current key is empty. Cleared together with it. |
 | `controls-exchange-sidebar-width-v1` | Sidebar width preference. |
 | `hvac-smarty-pants-explorer-split-v1` | Tree/palette split (legacy name, kept on purpose). |
+| `controls-exchange-theme-v1` | `dark` when the visitor chose Tools > Dark theme (edition 5.48); removed when they switch back. Read by the head script on every page. |
 
 Never rename these keys. Nothing is written just by browsing, only when the visitor saves something.
+
+## 7a. Dark theme (edition 5.48)
+
+- **Tools > Dark theme** toggles it (`data-command="theme"`, `aria-pressed`, "On" when active). Search finds it as "Dark theme" (also "dark mode", "theme"), and choosing that result toggles it.
+- **The dark rules are generated, never hand-written.** `tools/codex/theme.mjs` reads the light stylesheet and writes a twin rule under `:root[data-theme="dark"]` for every color declaration, after the marker comment `/* Dark theme: generated … */`. Colors are mapped by job: backgrounds go dark, text goes light, lines go mid-gray; saturated colors used as backgrounds (menu red, red buttons, selection blue) stay as they are; colored text gets a lighter tint of the same hue. The generator runs it for `index.html`, the collection pages and privacy/terms; `render-worksheets.py` calls `tools/codex/theme-cli.mjs` for the worksheet pages. `404.html` is static: if its CSS changes, rebuild its style with `node the-controls-exchange/tools/codex/theme-cli.mjs dark` and run `check-site.py --fix-hashes`.
+- **Edit only the light CSS.** To fix one color in dark, add an entry to `DARK_OVERRIDES` (`'role:#light': '#dark'`). Rules whose selector mentions `data-theme` or matches `DARK_KEEP` (white backings behind creator logos, the Home graphic) are skipped. Extraction strips the dark block, so the source `styles.css` stays light-only.
+- **No flash:** a tiny head script (`THEME_BOOT`, `<script id="theme-boot">` in `index.html`) sets `data-theme` before the page paints; its hash is in every page's CSP.
+- **Logos:** images that are charcoal on light have a `theme-light`/`theme-dark` pair; CSS hides the one that doesn't match.
+- **Check both themes** after any visual change: the axe pass must be clean in light and dark (set the storage key to `dark` before loading to test dark).
+
+## 7b. BAS coming up (edition 5.48)
+
+- A Learning palette page (`#events/events`, folder `events` under History, calendar icon) listing upcoming shows, conferences and live training. Data lives in `events` in the library data: `reviewed`, `reviewedISO`, `schedule`, `intro` and `items`.
+- Each item: `id` (`EV-…`, permanent), `title`, `organizer`, `start`/`end` (`YYYY-MM-DD`), `time`, `format` (`Online`, `In person` or `Hybrid`), `location`, `cost` (as the organizer states it, e.g. "Free with registration", "Paid"), `topics`, `summary`, `url` (the organizer's own page, on an approved host), `checked`. Optional `sessions` (title, date within the event, time, room, type) with `sessionsLabel`, and `links` (`[name, url]` pairs). `security.mjs` validates all of it.
+- **Past events drop off by themselves**: the page, Home and search only show items whose `end` is today or later in the visitor's own time zone; past sessions inside an event drop off too. Old entries can be pruned in the weekly review.
+- Home shows a small "Coming up" link under "New to BAS?" with the next event. Search finds the page ("BAS coming up", "events", "webinars", "calendar", "trade shows") and every upcoming event by title.
+- Only dates read on the organizer's own page go in. If a page shows no date, leave the event out. Albert approves new items before they go live (weekly check, preview first).
+
 
 ## 8. Static collection pages
 

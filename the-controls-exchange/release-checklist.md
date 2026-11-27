@@ -26,6 +26,8 @@ Changes that only touch this `the-controls-exchange/` folder, `AGENTS.md` or `CL
 
 Shortcut for steps 4, 5 and 7 plus all CSP hashes: after editing the data in `index.html` (steps 1–3), render with `node the-controls-exchange/tools/codex/generate-public.mjs --output-dir <folder outside the repo>` and copy back only the `.html` files that differ. Editions 5.40 and 5.41 were released this way.
 
+Dark theme and events (edition 5.48): after any visual change, run the axe pass in both themes (light, then with the `controls-exchange-theme-v1` storage key set to `dark`). If `404.html`'s CSS changes, rebuild its style with `theme-cli.mjs dark`. For BAS coming up, add only items whose date you read on the organizer's own page, add new link hosts to `APPROVED_HOSTS` and `security.approvedHosts`, and keep `events.reviewed` current.
+
 Release-note voice: what changed, then what was preserved ("All N learning records, saved notes, IDs, source links and true addition dates are preserved.").
 
 ## 3. Verify

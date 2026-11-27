@@ -7,6 +7,20 @@ import {assertResourceReportUrl} from './resource-report.mjs';
 // Reviewed against the published v3.1 link inventory. New hosts require review;
 // neither a suffix match nor a host found in newly imported content approves it.
 export const APPROVED_HOSTS=Object.freeze([
+ // BAS coming up (edition 5.48): official event and webinar pages, reviewed November 27, 2026.
+ 'www.trane.com',
+ 'www.realcomm.com',
+ 'www.bigmarker.com',
+ 'events.jci.com',
+ 'light-middle-east.ae.messefrankfurt.com',
+ 'www.ashrae.org',
+ 'www.ahrexpo.com',
+ 'ahr27.mapyourshow.com',
+ 'ish.messefrankfurt.com',
+ 'www.mcee.ca',
+ 'www.cxenergy.com',
+ 'www.haystackconnect.org',
+ 'www.ahrexpomexico.com',
  // EnOcean's LON wiki and Echelon document archive, METZ CONNECT's U10 page and ABB's technical library, reviewed November 23, 2026.
  'enoceanwiki.atlassian.net',
  'downloads.echelon.com',
@@ -78,6 +92,7 @@ const approvedHosts=new Set(APPROVED_HOSTS);
 const resourceId=/^[A-Z][0-9]{2,4}$/;
 const slugId=/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 const newsId=/^NEWS-[A-Z0-9]+(?:-[A-Z0-9]+)*$/;
+const eventId=/^EV-[A-Z0-9]+(?:-[A-Z0-9]+)*$/,isoDate=/^\d{4}-\d{2}-\d{2}$/;
 const reservedIds=new Set(['constructor','prototype','__proto__']);
 // Connection-type folders inside each protocol family (Albert, November 3, 2026).
 const PROTOCOL_SECTIONS=Object.freeze(['wireless-lorawan','wireless-lora-radio','wireless-lumenradio','bacnet-general','bacnet-ip','bacnet-mstp','modbus-general','modbus-tcp','modbus-rtu','lon-general','lon-ft10','lon-ip852']);
@@ -202,6 +217,21 @@ export function validatePublicData(data){
   refs(item.resources,'news.items.'+index+'.resources');
  }
  for(const [index,source]of array(news.sources,'news.sources').entries())external(record(source,'news source').url,'news.sources.'+index+'.url');
+ // BAS coming up: official links, real dates, and every label a visitor sees.
+ const events=record(data.events,'events'),eventIds=new Set();
+ for(const [index,item]of array(events.items,'events.items').entries()){
+  const at='events.items.'+index;record(item,'event');uniqueId(item.id,eventId,eventIds,at+'.id');external(item.url,at+'.url');
+  if(!isoDate.test(item.start)||!isoDate.test(item.end)||item.end<item.start)throw Error('Event dates must be YYYY-MM-DD, ending on or after the start: '+at);
+  for(const field of ['title','organizer','format','location','cost','summary','checked'])if(typeof item[field]!=='string'||!item[field].trim())throw Error('Missing event label: '+at+'.'+field);
+  if(!['Online','In person','Hybrid'].includes(item.format))throw Error('Event format must be Online, In person or Hybrid: '+at);
+  if(!array(item.topics,at+'.topics').every(topic=>typeof topic==='string'&&topic.trim()))throw Error('Invalid event topics: '+at);
+  for(const [linkIndex,link]of array(item.links||[],at+'.links').entries())linkTuple(link,at+'.links.'+linkIndex);
+  for(const [sessionIndex,session]of array(item.sessions||[],at+'.sessions').entries()){
+   record(session,'event session');
+   if(!isoDate.test(session.date)||session.date<item.start||session.date>item.end)throw Error('Event session date outside the event: '+at+'.sessions.'+sessionIndex);
+   for(const field of ['title','time','room','type'])if(typeof session[field]!=='string'||!session[field].trim())throw Error('Missing event session label: '+at+'.sessions.'+sessionIndex+'.'+field);
+  }
+ }
  const recommended=record(data.recommended,'recommended'),publishers=new Set(),creditedProviders=new Set();
  for(const [index,publisher]of array(recommended.publishers,'recommended.publishers').entries()){
   record(publisher,'recommended publisher');uniqueId(publisher.id,slugId,publishers,'recommended.publishers.'+index+'.id');

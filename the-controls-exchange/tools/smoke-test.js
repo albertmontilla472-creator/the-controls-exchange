@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
   if (axePath) {
     // Separate context: axe is injected, so CSP is bypassed only here, never in the load checks above.
     const axe = fs.readFileSync(axePath, 'utf8');
-    const views = ['index.html#library/home', 'index.html#library/protocol-lon-ft10', 'index.html#news/news',
+    const views = ['index.html#library/home', 'index.html#library/protocol-lon-ft10', 'index.html#news/news', 'index.html#events/events',
       'index.html#software/downloads', 'index.html#recommended/recommended', 'index.html#programming/programming',
       'niagara-4.html', 'privacy.html', 'lon-ft10-field-checklist.html', '404.html'];
     for (const [label, viewport, isMobile] of [['desktop', { width: 1440, height: 900 }, false], ['phone', { width: 390, height: 844 }, true]]) {
