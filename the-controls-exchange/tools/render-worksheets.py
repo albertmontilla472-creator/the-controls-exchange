@@ -13,6 +13,7 @@ import html
 import json
 import os
 import re
+import subprocess
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -22,6 +23,7 @@ a{color:#a82821;text-underline-offset:3px}a:hover{color:#8a1f19}a:focus-visible{
 .brand-bar{border-top:5px solid var(--red);border-bottom:1px solid var(--line);background:#f3f3f3}
 .brand-inner{max-width:880px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:600;text-decoration:none}.brand img{display:block}
+:root:not([data-theme="dark"]) .theme-dark,:root[data-theme="dark"] .theme-light{display:none!important}
 .brand-note{color:var(--muted);font-size:13px}
 main{max-width:880px;margin:0 auto;padding:22px 20px 40px}
 .breadcrumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted);margin-bottom:14px}
@@ -43,6 +45,12 @@ code{font-family:Consolas,Menlo,monospace;font-size:13px;background:#f1f3f5;padd
 @media print{.brand-bar,.breadcrumbs,.actions,.footer{display:none}body{font-size:11pt;color:#000}main{max-width:none;padding:0}
  h2{break-after:avoid}table,tr,.field{break-inside:avoid}a{color:#000;text-decoration:none}th{background:#eee}}
 """
+
+
+def theme(mode, css=""):
+    """Dark theme from tools/codex/theme.mjs, so worksheets match the rest of the site."""
+    cli = os.path.join(ROOT, "the-controls-exchange", "tools", "codex", "theme-cli.mjs")
+    return subprocess.run(["node", cli, mode], input=css, capture_output=True, text=True, check=True).stdout
 
 
 def csp_hash(text):
@@ -117,17 +125,18 @@ def render_markdown(md):
     return title, "\n".join(out)
 
 
-def page(title, body, md_file, version):
-    csp = ("default-src 'none'; script-src 'none'; script-src-attr 'none'; style-src %s; style-src-attr 'none'; img-src 'self'; "
+def page(title, body, md_file, version, css, boot):
+    csp = ("default-src 'none'; script-src %s; script-src-attr 'none'; style-src %s; style-src-attr 'none'; img-src 'self'; "
            "connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'none'; "
-           "media-src 'none'; font-src 'none'; manifest-src 'none'; upgrade-insecure-requests;" % csp_hash(CSS))
+           "media-src 'none'; font-src 'none'; manifest-src 'none'; upgrade-insecure-requests;" % (csp_hash(boot), csp_hash(css)))
     short = re.sub(r"^The Controls Exchange\s+—\s+", "", title)
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="%s">'
             '<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">'
             '<meta name="theme-color" content="#d52e24"><title>%s | The Controls Exchange</title>'
-            '<link rel="icon" type="image/svg+xml" href="controls-exchange-mark.svg?v=%s"><style>%s</style></head><body>'
+            '<link rel="icon" type="image/svg+xml" href="controls-exchange-mark.svg?v=%s"><script>%s</script><style>%s</style></head><body>'
             '<header class="brand-bar"><div class="brand-inner"><a class="brand" href="index.html#library/home">'
-            '<img src="controls-exchange-mark-clear.svg?v=%s" alt="" width="30" height="30">The Controls Exchange</a>'
+            '<img class="theme-light" src="controls-exchange-mark-clear.svg?v=%s" alt="" width="30" height="30">'
+            '<img class="theme-dark" src="controls-exchange-mark-clear-dark.svg?v=%s" alt="" width="30" height="30">The Controls Exchange</a>'
             '<span class="brand-note">Free study worksheet</span></div></header><main>'
             '<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html#library/home">Home</a><span aria-hidden="true">/</span>'
             '<a href="index.html#software/downloads">Software &amp; worksheets</a></nav>'
@@ -136,19 +145,20 @@ def page(title, body, md_file, version):
             '<a href="downloads/%s" download="%s">Download the editable Markdown file ↓</a></div>%s'
             '<footer class="footer"><span>Original worksheet from The Controls Exchange. Free to print and use.</span>'
             '<span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms &amp; notices</a></span></footer>'
-            '</main></body></html>\n') % (csp, html.escape(short), version, CSS, version, html.escape(short), md_file, md_file, body)
+            '</main></body></html>\n') % (csp, html.escape(short), version, boot, css, version, version, html.escape(short), md_file, md_file, body)
 
 
 def main():
     index = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
     data = json.loads(re.search(r'<script id="library-data" type="application/json">(.*?)</script>', index, re.S).group(1))
     version = data["release"]["version"]
+    css, boot = theme("dark", CSS), theme("boot")
     for d in data["downloads"]:
         md = open(os.path.join(ROOT, "downloads", d["file"]), encoding="utf-8").read()
         title, body = render_markdown(md)
         name = d["file"][:-3] + ".html"
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as fh:
-            fh.write(page(title or d["title"], body, d["file"], version))
+            fh.write(page(title or d["title"], body, d["file"], version, css, boot))
         print("wrote", name)
 
 

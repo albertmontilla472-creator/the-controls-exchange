@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 144" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">The Controls Exchange by Smarty.ctrl</title>
+  <desc id="logo-description">The Controls Exchange wordmark with an original light gray C and red crossing signal paths.</desc>
+  <g transform="translate(4 8)">
+    <path d="M83 25H47L23 49V79L47 103H83" fill="none" stroke="#D9DCE0" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76 47L108 79M108 47L76 79" fill="none" stroke="#ED3224" stroke-width="11" stroke-linecap="round"/>
+  </g>
+  <text x="154" y="69" fill="#D9DCE0" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" letter-spacing="0.4">THE CONTROLS EXCHANGE</text>
+  <text x="155" y="100" fill="#B4BEC6" font-family="Arial, Helvetica, sans-serif" font-size="18">by <tspan fill="#ED3224" font-weight="700">Smarty.ctrl</tspan></text>
+</svg>
