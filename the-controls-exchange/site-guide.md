@@ -169,6 +169,10 @@ Count badges show immediate contents. They are computed, never hand-typed.
 
 Never rename these keys. Nothing is written just by browsing, only when the visitor saves something.
 
+## 6a. Keep pages light (edition 5.50)
+
+Albert wants each page to carry just the right amount of information. Since 5.50 these data fields stay in the library data but are **not shown**: news `why` ("For your work"), software `lab` ("First lab"), programming `exercise` ("Practice it"), `niagara5.study` and `niagara5.resources` ("What to study now"), creator `access`, `scope` and `checked`, resource `practiceAccess`, and event `topics`. "Report via Gmail" appears only in a resource's Properties, not on every list row. Properties shows `accessDisplay`, `access` only when it says more than "Public link", and the resource's own `note`. Home news cards show brand, title, date and status. Don't bring these back without asking Albert. New entries may still fill the fields (validation expects them), but keep new on-page text short.
+
 ## 7a. Dark theme (edition 5.48)
 
 - **Tools > Dark theme** toggles it (`data-command="theme"`, `aria-pressed`, "On" when active). Search finds it as "Dark theme" (also "dark mode", "theme"), and choosing that result toggles it.
