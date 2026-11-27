@@ -18,7 +18,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 CSS = """:root{color-scheme:light;--red:#d52e24;--ink:#20262d;--muted:#5b6570;--line:#d7dce2;--pane:#f7f8f9;--focus:#2468a5}
 *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:15px/1.55 "Segoe UI",Arial,sans-serif}
-a{color:#185582;text-underline-offset:3px}a:hover{color:#9b211b}a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+a{color:#a82821;text-underline-offset:3px}a:hover{color:#8a1f19}a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .brand-bar{border-top:5px solid var(--red);border-bottom:1px solid var(--line);background:#f3f3f3}
 .brand-inner{max-width:880px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:600;text-decoration:none}.brand img{display:block}
