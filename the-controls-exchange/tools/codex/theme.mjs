@@ -182,6 +182,8 @@ function rootTokens(nodes) {
 }
 
 const COLOR = /#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b/g;
+// rgb()/rgba() colors (privacy and terms use them) are read as hex so they map like any other color.
+const RGB = /rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:[\s,/]+([\d.]+%?))?\s*\)/g;
 
 function darkDecls(body, resolve) {
   const out = [];
@@ -190,7 +192,8 @@ function darkDecls(body, resolve) {
     const prop = d.slice(0, k).trim().toLowerCase(), role = roleOf(prop);
     if (!role) continue;
     let value = d.slice(k + 1).trim();
-    const resolved = resolve(value).replace(/(^|[\s,(])white\b/g, '$1#ffffff').replace(/(^|[\s,(])black\b/g, '$1#000000');
+    const resolved = resolve(value).replace(/(^|[\s,(])white\b/g, '$1#ffffff').replace(/(^|[\s,(])black\b/g, '$1#000000')
+      .replace(RGB, (m, r, g, b, a) => '#' + [r, g, b].map(v => Math.round(+v).toString(16).padStart(2, '0')).join('') + (a === undefined ? '' : Math.round((a.endsWith('%') ? parseFloat(a) / 100 : +a) * 255).toString(16).padStart(2, '0')));
     // Every border, background, outline, shadow and text-color declaration gets a twin, even with no color in it
     // ("border:0", "background:none"): otherwise an earlier rule's dark twin would beat a later reset in the light CSS.
     const mapped = resolved.replace(COLOR, hex => darkColor(hex, role));
