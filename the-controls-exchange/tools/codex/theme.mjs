@@ -76,10 +76,14 @@ export function darkColor(hex, role) {
   if (DARK_OVERRIDES[key]) return DARK_OVERRIDES[key];
   const rgba = hexToRgb(hex), alpha = rgba[3];
   const [L, C, h] = rgbToOklch(rgba.slice(0, 3));
-  let Ld = L, Cd = C;
+  let Ld = L, Cd = C, hd = h;
+  const deg = ((h * 180 / Math.PI) + 360) % 360;
+  const blueTint = role === 'bg' && C >= 0.01 && deg >= 200 && deg <= 280;   // pale blue hover/selection tints keep their blue
+  const neutral = C < 0.035 && !blueTint;                       // other grays and near-grays share one cool tint in dark
   if (role === 'bg') {
     if (C >= 0.09 && L < 0.8) return hex;                       // brand reds, selection blue, status colors
-    if (L >= 0.62) { Ld = 0.235 + (1 - L) * 0.55; Cd = Math.min(C * 0.8, 0.045); }
+    // Lighter light-theme surfaces stay close to the page; hover, selection and header tints step up clearly.
+    if (L >= 0.62) { Ld = Math.min(0.235 + (1 - L) * 0.85, 0.42); Cd = Math.min(C * 0.8, 0.045); }
     else { Ld = L * 0.62; Cd = C * 0.8; }                       // chrome that was already dark stays darker than the page
   } else if (role === 'fg') {
     if (L >= 0.9 && C < 0.05) return hex;                       // white text on colored buttons and bars
@@ -93,8 +97,11 @@ export function darkColor(hex, role) {
     if (L >= 0.8 && C < 0.06 && (alpha === undefined || alpha > 0.9)) return darkColor(hex, 'bg');   // solid light shadows extend a background
     return hex;
   } else return hex;
-  return toHex(Ld, Cd, h, alpha);
+  if (blueTint && L >= 0.62) Cd = Math.min(C * 1.8, 0.045);
+  if (neutral && ['bg', 'fg', 'line'].includes(role)) { Cd = role === 'fg' ? 0.006 : 0.009; hd = NEUTRAL_HUE; }
+  return toHex(Ld, Cd, hd, alpha);
 }
+const NEUTRAL_HUE = 255 * Math.PI / 180;
 
 // ---------------------------------------------------------------- CSS walking
 function stripComments(css) {
@@ -152,6 +159,7 @@ function roleOf(prop) {
   if (prop.startsWith('--')) return null;
   if (['color', 'caret-color', 'text-decoration-color', '-webkit-text-fill-color', 'accent-color'].includes(prop)) return 'fg';
   if (prop.startsWith('background')) return 'bg';
+  if (['border-radius', 'border-collapse', 'border-spacing'].includes(prop) || /^border-(top|bottom)-(left|right)-radius$/.test(prop)) return null;
   if (prop.startsWith('border') || prop.startsWith('outline') || prop.startsWith('column-rule')) return 'line';
   if (prop === 'box-shadow') return 'shadow';
   return null;                                                  // fills and strokes keep their colors
@@ -174,6 +182,8 @@ function rootTokens(nodes) {
 }
 
 const COLOR = /#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b/g;
+// rgb()/rgba() colors (privacy and terms use them) are read as hex so they map like any other color.
+const RGB = /rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:[\s,/]+([\d.]+%?))?\s*\)/g;
 
 function darkDecls(body, resolve) {
   const out = [];
@@ -182,11 +192,12 @@ function darkDecls(body, resolve) {
     const prop = d.slice(0, k).trim().toLowerCase(), role = roleOf(prop);
     if (!role) continue;
     let value = d.slice(k + 1).trim();
-    const resolved = resolve(value).replace(/(^|[\s,(])white\b/g, '$1#ffffff').replace(/(^|[\s,(])black\b/g, '$1#000000');
-    if (!COLOR.test(resolved)) continue;
-    COLOR.lastIndex = 0;
+    const resolved = resolve(value).replace(/(^|[\s,(])white\b/g, '$1#ffffff').replace(/(^|[\s,(])black\b/g, '$1#000000')
+      .replace(RGB, (m, r, g, b, a) => '#' + [r, g, b].map(v => Math.round(+v).toString(16).padStart(2, '0')).join('') + (a === undefined ? '' : Math.round((a.endsWith('%') ? parseFloat(a) / 100 : +a) * 255).toString(16).padStart(2, '0')));
+    // Every border, background, outline, shadow and text-color declaration gets a twin, even with no color in it
+    // ("border:0", "background:none"): otherwise an earlier rule's dark twin would beat a later reset in the light CSS.
     const mapped = resolved.replace(COLOR, hex => darkColor(hex, role));
-    out.push(prop + ':' + mapped);                                // unchanged colors too, so the dark rules keep the light cascade order
+    out.push(prop + ':' + mapped);
   }
   return out.join(';');
 }
