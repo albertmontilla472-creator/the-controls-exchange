@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; script-src-attr 'none'; style-src 'sha256-LcjHciNQyS+XGukUQBisJFABPiR5tmZGqePovny3u9k='; style-src-attr 'none'; img-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'none'; media-src 'none'; font-src 'none'; manifest-src 'none'; upgrade-insecure-requests;"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#d52e24"><title>programming practice workbook | The Controls Exchange</title><link rel="icon" type="image/svg+xml" href="controls-exchange-mark.svg?v=5.48"><style>:root{color-scheme:light;--red:#d52e24;--ink:#20262d;--muted:#5b6570;--line:#d7dce2;--pane:#f7f8f9;--focus:#2468a5}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:15px/1.55 "Segoe UI",Arial,sans-serif}
+a{color:#185582;text-underline-offset:3px}a:hover{color:#9b211b}a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.brand-bar{border-top:5px solid var(--red);border-bottom:1px solid var(--line);background:#f3f3f3}
+.brand-inner{max-width:880px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:600;text-decoration:none}.brand img{display:block}
+.brand-note{color:var(--muted);font-size:13px}
+main{max-width:880px;margin:0 auto;padding:22px 20px 40px}
+.breadcrumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted);margin-bottom:14px}
+.eyebrow{margin:0 0 4px;color:#a82821;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+h1{margin:0 0 10px;font-size:26px;line-height:1.25}h2{margin:26px 0 10px;padding-top:12px;border-top:1px solid var(--line);font-size:18px}
+p{margin:0 0 10px}ul,ol{margin:0 0 12px;padding-left:22px}li{margin:4px 0}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:4px 0 18px;padding:10px 12px;background:var(--pane);border:1px solid var(--line);font-size:14px}
+.actions .tip{color:var(--muted)}
+.field{display:flex;gap:10px;align-items:flex-end;margin:0 0 8px}.field span:first-child{flex:0 0 auto;font-weight:600}
+.field .blank{flex:1;border-bottom:1px solid #8a939c;min-height:1.3em}
+.checks{list-style:none;padding-left:0}.checks li{display:flex;gap:9px;align-items:flex-start}
+.box{flex:0 0 auto;width:15px;height:15px;margin-top:4px;border:1.5px solid #5b6570;border-radius:2px;background:#fff}
+table{width:100%;border-collapse:collapse;margin:6px 0 16px;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{border:1px solid #c5ccd3;padding:7px 8px;text-align:left;vertical-align:top}th{background:#eef1f4;font-weight:600}
+td:empty{height:2.1em}
+code{font-family:Consolas,Menlo,monospace;font-size:13px;background:#f1f3f5;padding:1px 4px;border-radius:3px}
+.footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--muted);font-size:13px}
+@media(max-width:640px){body{font-size:14px}h1{font-size:22px}table{font-size:12px}th,td{padding:5px 4px;word-break:break-word}}
+@media print{.brand-bar,.breadcrumbs,.actions,.footer{display:none}body{font-size:11pt;color:#000}main{max-width:none;padding:0}
+ h2{break-after:avoid}table,tr,.field{break-inside:avoid}a{color:#000;text-decoration:none}th{background:#eee}}
+</style></head><body><header class="brand-bar"><div class="brand-inner"><a class="brand" href="index.html#library/home"><img src="controls-exchange-mark-clear.svg?v=5.48" alt="" width="30" height="30">The Controls Exchange</a><span class="brand-note">Free study worksheet</span></div></header><main><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html#library/home">Home</a><span aria-hidden="true">/</span><a href="index.html#software/downloads">Software &amp; worksheets</a></nav><p class="eyebrow">Printable worksheet</p><h1>programming practice workbook</h1><div class="actions"><span class="tip">Print or save as PDF with your browser (Ctrl+P / Cmd+P).</span><a href="downloads/programming-practice-workbook.md" download="programming-practice-workbook.md">Download the editable Markdown file ↓</a></div><p>These exercises can begin on paper. Implement them when your actual controllers, firmware, tools and licenses are identified. Each platform has its own blocks, application limits and download procedure.</p>
+<h2>Niagara kitControl: fan enable and proof</h2>
+<p>Sketch occupancy AND enable conditions → fan command. After a start delay, generate a proof-failure condition when command is true and feedback is false.</p>
+<p>Predict normal start, failed start, shutdown and manual override/release. Choose trends for occupancy, command, proof and alarm condition. Identify the exact components and their status handling in the installed kitControl palette; the library’s Niagara videos are supporting lessons.</p>
+<h2>Honeywell IRM: VAV mode table</h2>
+<p>List airflow measurement, occupied/unoccupied modes, setpoints, damper demand, overrides and available alarms. Draw mode selection before the airflow-control path.</p>
+<p>Predict occupied minimum flow, increased cooling demand, unoccupied operation and invalid airflow measurement. Use the matching IRM block guide and controller template to verify behavior. Record model and tool package before repeating a demonstration.</p>
+<h2>Classic Spyder: fan-coil application plan</h2>
+<p>Record LON or BACnet, controller model and the Classic Spyder tool build. Sketch occupancy, temperature demand, fan enable, valve demand and proof.</p>
+<p>Use the Classic guide to identify candidate function blocks and the simulation/debugging workflow. Predict sequence outcomes before opening a matching tool. Keep this plan separate from Model 5/7 IRM demonstrations.</p>
+<h2>JCI CCT: airflow loop checkout</h2>
+<p>Trace measured airflow → error from setpoint → damper demand → actual airflow. Add occupancy and override cases.</p>
+<p>Prepare four simulation inputs and predicted outputs. Record actual FX controller family, CCT release and controller package. The library’s first-program CVM video is a Metasys example, so verify applicability before following controller-specific steps.</p>
+<h2>Distech EC-gfxProgram: test before download</h2>
+<p>Write a fan-coil sequence and separate physical points, network values and internal logic. Identify a block you might reuse.</p>
+<p>Make a test matrix for occupancy changes, temperature changes, fan failure and override/release. Use the simulator/emulator supported by your actual release; older public feature demos may show different interfaces.</p>
+<h2>Shared study record</h2>
+<table><thead><tr><th>Platform / lesson</th><th>Prediction</th><th>Observed behavior</th><th>Explanation</th><th>Next test</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+<p>A useful result is a readable sequence, point list and functional test table. A program that downloads still needs evidence that the equipment responds correctly.</p><footer class="footer"><span>Original worksheet from The Controls Exchange. Free to print and use.</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms &amp; notices</a></span></footer></main></body></html>

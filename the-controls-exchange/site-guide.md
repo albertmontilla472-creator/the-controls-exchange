@@ -1,6 +1,6 @@
 # Site guide: how The Controls Exchange is built
 
-Reference for anyone (Claude or a person) changing the site. It describes the site as of **edition 5.47 (November 23, 2026)**. Update this file when the architecture changes.
+Reference for anyone (Claude or a person) changing the site. It describes the site as of **edition 5.48 (November 27, 2026)**. Update this file when the architecture changes.
 
 ## 1. What the site is
 
@@ -19,7 +19,9 @@ The interface is modelled on a **Niagara / Honeywell Optimizer Workbench** (menu
 | `index.html` (~899 KB) | The whole learning workbench app: inline CSS, an inline JSON data block with every resource, and one inline app script. |
 | `collections.html` | Index of the 10 shareable collection pages. |
 | `bas-fundamentals.html`, `communication-protocols.html`, `niagara-ax.html`, `niagara-4.html`, `niagara-5.html`, `honeywell-optimizer-irm.html`, `honeywell-classic-spyder.html`, `honeywell-spyder-model-5-7.html`, `honeywell-ciper.html`, `jci-fx-cct.html`, `distech-gfx.html` | **Pre-rendered** static collection pages (work without JavaScript). Each has its own small CSS and a tiny search script. |
-| `privacy.html`, `terms.html` | Static notices. Their text mirrors `publicSite.privacy` / `publicSite.terms` in the data (keep both in sync). Their `<style>` is an **exact copy** of `index.html`'s `<style>`. No scripts. |
+| `privacy.html`, `terms.html` | Static notices. Their text mirrors `publicSite.privacy` / `publicSite.terms` in the data (keep both in sync). Since 5.48 their `<style>` is `the-controls-exchange/tools/codex/legal.css` (only the rules these pages use, about 6 KB). No scripts. |
+| `404.html` | Workbench-style "not found" page that GitHub Pages serves for any missing address. Links are absolute (`/the-controls-exchange/…`) and the CX mark is inline because the page can appear at any depth. No scripts. |
+| `*-worksheet.html`, `*-workbook.html`, `*-checkout.html`, `*-checklist.html` | Printable pages for each `downloads/*.md` worksheet, made by `the-controls-exchange/tools/render-worksheets.py` (run it after editing a worksheet or bumping the edition). |
 | `controls-exchange-mark.svg`, `-logo.svg`, `-icon.svg`, `favicon.svg`, `controls-exchange-share.png` | Brand artwork (the red "CX" mark, Home logo, social share image 1200×630). |
 | `icons/` | Local logo files: `creator-*.png` (128×128 creator logos), `brand-vykon.png`, `ec-gfxprogram.png`, `facility-explorer.png`, `niagara-generations.webp`. Fingerprints are pinned in `the-controls-exchange/icons-manifest.json`. |
 | `downloads/*.md` | Four original study worksheets (signal path, BACnet point checkout, programming practice, LON FT-10 and Spyder field checklist). |
@@ -45,7 +47,7 @@ If you change a single character inside any inline `<script>` or `<style>` (incl
 python3 the-controls-exchange/tools/check-site.py --fix-hashes
 ```
 
-When `index.html`'s CSS changes, copy the identical `<style>` block into `privacy.html` and `terms.html` too, then fix hashes.
+Privacy and terms use `legal.css` (edition 5.48); the generator writes it and its hash. If a change to the main CSS should also show on those two pages, update `legal.css` to match.
 
 ## 4. The data model (`index.html` → `<script id="library-data">`)
 
@@ -124,6 +126,8 @@ The app script builds the folder tree from the data at load time (`addFolder(...
 - `Communication protocols` (first under `Drivers`) → Wireless (LoRaWAN, LoRa radio, LumenRadio), BACnet (General, IP, MS/TP), Modbus (General, TCP, RTU), Lon (General, FT-10, IP-852) and N2. Membership comes from `protocols` (the family) and `protocolSections` (one of `wireless-lorawan`, `wireless-lora-radio`, `wireless-lumenradio`, `bacnet-general`, `bacnet-ip`, `bacnet-mstp`, `modbus-general`, `modbus-tcp`, `modbus-rtu`, `lon-general`, `lon-ft10`, `lon-ip852`). `*-general` holds resources that cover both connection types or don't say which. Each folder lists its resources directly, videos first; a section folder appears only when it has resources. N2 has no sections. Every protocol folder uses the protocol owner's mark (`nodeIcon` fixed map). Old `protocol-*-videos` / `-docs` links redirect to their protocol folder. Shared lessons retain one id.
 - `PLC` (last under `Drivers`, edition 5.46) → `Honeywell QronoX` (`plc-honeywell-qronox`, Honeywell mark; the folder icon `plc` is an original Lucid DIN-rail PLC). Membership comes from `plcs` (like `protocols`); `plcsOnly`/`plcFamily` in `folderAllows`. PLC lessons live in track `bas` with their own `tool` (`QronoX PLC`, `IEC 61131-3 programming`), so they stay out of BAS fundamentals/advanced and `bas-fundamentals.html` (`excludePlcs`). QronoX material comes first; general IEC 61131-3 / CODESYS lessons follow and are labeled general in `generation`, `version` and `note` (Albert, November 14, 2026). The search label is `QronoX PLC (Honeywell, Saia PCD3.M6893)` so plain “QronoX” finds the folder first. A new PLC family needs a new `plcs` value, a folder in the app and the `security.mjs` allowlist.
 - `General BAS Learning` → `BAS advanced` (track `bas`, tool `General BAS learning`, newest `publishedAt` first) and `BAS fundamentals` (tool `BAS fundamentals`).
+- Home tiles (`homeSystems` in the app): Niagara, Optimizer/IRM, Classic Spyder, JCI, Distech, Communication protocols, PLC, Documentation (edition 5.48 added the two Drivers sections; container tiles show their resource totals).
+- Topic folders Wall modules, Backup / restore and Software modules have their own icons (`wall-module`, `backup`, `software`); brand subfolders keep their owner's mark.
 - `Programming` → one folder per `programming[]` path (six since 5.46; `Niagara Program Objects` sits directly below kitControl at Albert’s request and uses the Niagara mark).
 - `Files` → Documentation, Recommended resources, Software & worksheets. `History` → Controls news, Release watch, Sources & updates.
 
@@ -136,6 +140,8 @@ Count badges show immediate contents. They are computed, never hand-typed.
 ## 6. Icons and logos
 
 - Interface/function artwork is original inline SVG in `iconArt`; reviewed manufacturer/protocol marks identify their learning subjects. Local logo files are pinned separately.
+- **Design tokens and readability** (edition 5.48): shared colors live as `--cx-*` custom properties in `:root` (brand red, menu red, charcoal, teal, slate muted, surfaces, lines). Near-identical hex values were merged (perceptual difference under 2.3, invisible), cutting 268 distinct colors to 140. Use a token or an existing value instead of a new hex. Every text color meets WCAG AA 4.5:1; the menu red is `#e12f23` so its white labels pass. No visible text below 10px; main-pane captions are 11px; tree counts and chrome keep the compact 5.41 sizes. Numbers use tabular figures. The readability rules are one commented block at the end of the stylesheet.
+- **Nav tree builds on demand** (edition 5.48): only My Host and Station are built at load. Every other folder is a `<details data-lazy>` whose contents `openBranch()` builds the first time it opens (arrow, keyboard or `renderFolderChrome` revealing ancestors top-down). Home also skips building the hidden lesson list. Home went from about 17,500 to 3,500 page elements. Test helpers that open folders must open them in order and let each build.
 - **Interface icons are Lucid-style** (edition 5.42): original inline SVGs that fill with shared gradients `url(#cxl-*)` (gray metal, gold, blue, red, paper, folder yellow…). The gradients are defined once per page in `<svg class="icon-defs">`: at the top of `<body>` in `index.html`, and via `ICON_DEFS` from `tools/codex/icons.mjs` in collection pages. Never put gradient definitions inside an individual icon (repeated ids break when an icon is hidden). Product drawings (Optimizer, IRM, Spyder, CIPer, controller, lineup) and the Honeywell mark are not part of the Lucid set.
 - **Optimizer Workbench colors and shapes at compact sizes** (edition 5.43): one desktop-only block at the end of the stylesheet (`@media(min-width:651px)`) sets colors and shapes only: #f3f3f3 title bar, inset red menu bar (#ec3125, rounded bottom corners), #ebebeb toolbar, #6d6e77 location bar, charcoal #333 frame and status bar, tabbed "▾ Nav" headers. All sizes are the edition 5.41 ones from the older rules (22/30/30/26px chrome, 24/26px pane headers, 25px tree rows at 12px, 260px default Nav width). Albert rejected larger sizes; measure against 5.41 before changing any size. Phones keep the mobile rules.
 - **90% scale on desktop** (edition 5.44): `@media(min-width:651px){body.learning-workbench{zoom:.9;height:calc(100dvh / .9)}}` makes the default view match 90% browser zoom (sizes above are the unscaled CSS values). The height compensation keeps the docked layout full-height. Pointer-based resizing divides mouse distances by `uiZoom()`; keep that if you change the dividers. Phones are not scaled.

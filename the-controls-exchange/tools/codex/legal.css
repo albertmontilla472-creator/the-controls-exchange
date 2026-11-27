@@ -1,0 +1,89 @@
+:root { color-scheme: light; --reference-chrome: #ebead8; --reference-menu: #efede0; --reference-location: #a5a79d; --reference-frame: #b3b4a4; --reference-border: #96988a; --reference-pane: #ffffff; --reference-pane-header: #bedbfe; --reference-selection: #316ac5; --reference-hover: #e4edf9; --reference-row-alt: #fcfcf7; --reference-text: #202020; --reference-muted: #55574f; --reference-link: #174f88; --ink: var(--reference-text); --muted: var(--reference-muted); --paper: var(--reference-frame); --white: var(--reference-pane); --forest: var(--reference-link); --sage: var(--reference-menu); --line: var(--reference-border); --ochre: #805b15; --amber: #fff5d6; --on-accent: #ffffff; --sidebar: 248px; --chrome: 101px; font-family: Tahoma, "Segoe UI", Arial, sans-serif; --cx-white: #ffffff; --cx-teal: #176977; --cx-olive-text: #55574f; --cx-surface: #f9f9f9; --cx-slate-muted: #626e79; --cx-line-soft: #e5e9ed; --cx-charcoal: #333333; --cx-blue-tint: #dce7ee; --cx-surface-2: #edf0f2; --cx-red-dark: #a82821; --cx-brand-red: #d52e24; --cx-menu-red: #e12f23; }
+* { box-sizing: border-box; }
+body { margin: 0px; color: var(--ink); background: var(--reference-pane); font-size: 12px; line-height: 1.5; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+a { color: var(--reference-link); text-underline-offset: 2px; }
+a:hover { color: var(--reference-link); }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--reference-selection); outline-offset: 2px; }
+h1, h2, h3, h4, p { margin: 0px; }
+h1, h2, h3, h4 { line-height: 1.35; }
+h1 { font-size: 14px; }
+h2 { font-size: 18px; font-weight: 600; }
+::selection { color: var(--cx-white); background: var(--reference-selection); }
+.intro-text { font-size: 12px; color: var(--reference-muted); line-height: 1.8; margin-bottom: 20px; max-width: 1000px; }
+.footer { display: flex; justify-content: space-between; gap: 8px 20px; flex-wrap: wrap; margin: 20px 14px 0px; padding-top: 13px; border-top: 1px solid var(--reference-border); color: var(--reference-muted); font-size: 10px; }
+.legal-main { max-width: 900px; margin: 20px auto; background: var(--reference-pane); border: 1px solid var(--reference-border); padding: 30px; }
+.legal-main header { padding-bottom: 17px; border-bottom: 1px solid var(--reference-border); margin-bottom: 28px; font-size: 12px; }
+.legal-main h1 { font-size: 29px; font-weight: 500; color: var(--reference-text); margin-bottom: 12px; }
+.legal-main section { margin: 27px 0px; }
+.legal-main h2 { color: var(--reference-text); font-size: 20px; margin-bottom: 11px; }
+.legal-main p { font-size: 13px; line-height: 1.85; color: var(--reference-text); }
+.legal-main .footer { margin-left: 0px; margin-right: 0px; }
+@media (min-width: 1700px) {
+:root { --sidebar: 270px; }
+}
+@media (max-width: 1200px) {
+:root { --sidebar: 225px; }
+}
+@media (max-width: 900px) {
+:root { --sidebar: 0px; }
+}
+@media (max-width: 650px) {
+:root { --chrome: 138px; }
+.footer { margin-left: 9px; margin-right: 9px; flex-direction: column; font-size: 9px; }
+.legal-main { margin: 8px; padding: 22px 17px; }
+.legal-main h1 { font-size: 26px; }
+.legal-main h2 { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+* { scroll-behavior: auto !important; }
+}
+@media print {
+body { background: var(--reference-pane); color: var(--reference-text); font-size: 11pt; }
+.legal-main { border: 0px; margin: 0px; max-width: none; padding: 0px; }
+}
+.intro-text { font-size: 11px; line-height: 1.7; margin-bottom: 12px; }
+.footer { margin: 13px 9px 0px; padding-top: 9px; }
+@media (min-width: 901px) {
+:root { --chrome: 100px; --sidebar: 260px; }
+}
+@media (min-width: 1700px) {
+:root { --sidebar: 285px; }
+}
+@media (max-width: 900px) {
+:root { --chrome: 114px; }
+}
+@media (max-width: 650px) {
+:root { --chrome: 120px; }
+}
+:root { --reference-chrome: var(--cx-surface-2); --reference-menu: #f7f8f9; --reference-location: #696f79; --reference-frame: #575c63; --reference-border: #d2d5d9; --reference-pane: var(--cx-white); --reference-pane-header: var(--cx-white); --reference-selection: var(--cx-blue-tint); --reference-hover: var(--cx-surface-2); --reference-row-alt: #f7f8f9; --reference-text: #252a30; --reference-muted: #606872; --reference-link: var(--cx-teal); --accent: var(--cx-brand-red); --chrome: 108px; font-family: "Segoe UI", Arial, sans-serif; }
+body { font-size: 13px; line-height: 1.5; }
+.footer { margin: 22px 18px 0px; padding: 12px 0px 8px; border-top: 1px solid var(--cx-surface-2); justify-content: flex-end; font-size: 11px; color: rgb(108, 114, 121); }
+.footer a { color: rgb(108, 114, 121); }
+.intro-text { font-size: 13px; line-height: 1.8; color: rgb(109, 118, 129); margin-bottom: 20px; }
+.legal-main { max-width: 980px; padding: 32px 24px; }
+.legal-main h1 { font-size: 27px; }
+.legal-main section { border-color: var(--cx-line-soft); }
+.legal-main p { font-size: 14px; line-height: 1.8; }
+@media (min-width: 901px) {
+:root { --chrome: 108px; }
+}
+@media (max-width: 900px) {
+:root { --chrome: 108px; }
+}
+@media (max-width: 650px) {
+.footer { margin: 18px 12px 0px; font-size: 10px; }
+}
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible, .palette-divider:focus-visible, .sidebar-divider:focus-visible, .home-system-node:focus-visible { outline-color: var(--cx-teal); }
+.learning-workbench .resource-row.is-selected :is(.row-meta, .row-topic, .row-topic small, .row-duration, .row-context) { color: var(--cx-slate-muted); }
+@media screen and (max-width: 900px) {
+:root { --chrome: 136px; }
+html { scroll-padding-top: 148px; text-size-adjust: 100%; }
+.folder-intro, .intro-text { font-size: 13px; line-height: 1.7; }
+.footer { margin-inline: 12px; font-size: 12px; line-height: 1.8; }
+.footer a { display: inline-block; padding-block: 6px; }
+.legal-main { width: auto; max-width: 100%; margin: 12px 8px; padding: 20px 16px; overflow-wrap: anywhere; }
+.legal-main > header a { display: inline-block; min-height: 44px; padding-block: 8px; font-size: 13px; line-height: 1.6; }
+.legal-main p { font-size: 14px; line-height: 1.8; }
+}
+body.learning-workbench :is(.tree-count, .nav-count, .row-duration, .home-history-edition, time, #workspace-count, #result-count, .news-date, .home-system-text small) { font-variant-numeric: tabular-nums; }

@@ -183,9 +183,11 @@ def check_pages(data):
                 err("%s: insecure http link %s" % (page, url))
             elif data and host not in data["security"]["approvedHosts"] and host != "albertmontilla472-creator.github.io" and not url.startswith("https://mail.google.com/"):
                 warn("%s: link host %s is not in security.approvedHosts" % (page, host))
+    legal_css = os.path.join(ROOT, "the-controls-exchange", "tools", "codex", "legal.css")
+    legal_style = [open(legal_css, encoding="utf-8").read()] if os.path.exists(legal_css) else index_style
     for page in ("privacy.html", "terms.html"):
-        if os.path.exists(os.path.join(ROOT, page)) and STYLE_RE.findall(read(page)) != index_style:
-            err("%s: its <style> must be an exact copy of index.html's <style>" % page)
+        if os.path.exists(os.path.join(ROOT, page)) and STYLE_RE.findall(read(page)) != legal_style:
+            err("%s: its <style> must be an exact copy of the-controls-exchange/tools/codex/legal.css" % page)
     if data:
         updated = data["release"]["updated"]
         for page in ("privacy.html", "terms.html"):

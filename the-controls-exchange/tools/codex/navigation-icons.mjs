@@ -24,7 +24,7 @@ export function resolveFolderIcon(node={}){
   'Commissioning':'config','I/O':'points','Templates / reuse':'collection','Mixed collection':'collection',
   'Events / troubleshooting':'services','Troubleshooting':'config','Hardware / lineup':'lineup','Lineup':'lineup',
   'Documentation':'document','Software / licensing':'software','Licensing / compatibility':'security',
-  'Migration':'route','Migration / compatibility':'route','Niagara 5':'niagara-n5','Release notes':'release'
+  'Migration':'route','Migration / compatibility':'route','Niagara 5':'niagara-n5','Release notes':'release','Wall modules':'wall-module','Backup / restore':'backup','Software modules':'software'
  };
  if(topics[topic])return topics[topic];
  const tools={
