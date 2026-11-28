@@ -7,6 +7,8 @@ import {assertResourceReportUrl} from './resource-report.mjs';
 // Reviewed against the published v3.1 link inventory. New hosts require review;
 // neither a suffix match nor a host found in newly imported content approves it.
 export const APPROVED_HOSTS=Object.freeze([
+ // Forest Rock knowledge base (Niagara Network version rule), reviewed November 27, 2026.
+ 'docs.forestrock.co.uk',
  // BAS coming up (edition 5.48): official event and webinar pages, reviewed November 27, 2026.
  'www.trane.com',
  'www.realcomm.com',

@@ -7,7 +7,7 @@ export function normalizeControlsSearch(value){
   .replace(/\binputs?\s*(?:and|\/|&)\s*outputs?\b|\binputs?\s+outputs?\b/g,'io')
   .replace(/\bi\s*\/\s*o\b|\bi\s+o\b/g,'io')
   .replace(/\binputs\b/g,'input').replace(/\boutputs\b/g,'output')
-  .replace(/\bniagara\s*(?:n?4)\b/g,'n4').replace(/\bniagara\s*(?:n?5)\b/g,'n5').replace(/\bniagara\s*ax\b/g,'ax')
+  .replace(/\bniagara[\s-]*network\b/g,'niagaranetwork').replace(/\bniagara\s*(?:n?4)\b/g,'n4').replace(/\bniagara\s*(?:n?5)\b/g,'n5').replace(/\bniagara\s*ax\b/g,'ax')
   .replace(/\bfacility\s+explorer\b|\bjohnson\s+controls\b/g,'jci')
   .replace(/\bcontroller\s+configuration\s+tool\b/g,'cct')
   .replace(/\bkit[\s-]*control\b/g,'kitcontrol').replace(/\bn[\s-]+rio\b/g,'nrio')
